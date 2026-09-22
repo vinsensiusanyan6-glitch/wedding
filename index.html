@@ -1,31 +1,280 @@
 <!doctype html>
 <html lang="id">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>The Wedding of An Yan & Your Love</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ded3d0">
+<title>The Wedding of Vinsensius Anyan & Melania Mela</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
-  <main class="hero">
-    <p class="eyebrow">THE WEDDING OF</p>
-    <h1>An Yan <span>&</span> Your Love</h1>
-    <p>Bagikan momen indah bersama kami.</p>
-    <a class="lux-btn" href="#gallery">OPEN INVITATION</a>
-  </main>
+<body class="locked">
+<div class="page-bg" aria-hidden="true"></div>
+<div id="loader" class="loader"><span></span><b>MEMUAT UNDANGAN</b></div>
 
-  <section id="gallery" class="gallery">
-    <p class="eyebrow">MEMORIES</p>
-    <h2>Our visual poetry</h2>
-    <p>Bagikan momen indah bersama kami.</p>
-    <div id="photoGallery" class="gallery-grid">
-      <img src="assets/images/photo01.jpg" alt="Wedding memory 01">
-      <img src="assets/images/photo02.jpg" alt="Wedding memory 02">
-      <img src="assets/images/photo03.jpg" alt="Wedding memory 03">
-      <img src="assets/images/photo04.jpg" alt="Wedding memory 04">
-      <img src="assets/images/photo05.jpg" alt="Wedding memory 05">
-      <img src="assets/images/photo06.jpg" alt="Wedding memory 06">
+<section id="cover" class="cover">
+  <div class="cover-slides" data-slideshow="cover"></div>
+  <div class="cover-shade"></div>
+  <div class="cover-content">
+    <p class="cover-kicker">The Wedding of</p>
+    <h1>Vinsensius Anyan<br><em>&amp;</em> Melania Mela</h1>
+    <div class="cover-rule"></div>
+    <p class="cover-to">Kepada Yth.</p>
+    <p class="cover-to">Bapak/Ibu/Saudara/i</p>
+    <h2 id="guestName">Tamu Undangan</h2>
+    <button id="openBtn" class="open-btn"><span>♡</span> BUKA UNDANGAN</button>
+  </div>
+</section>
+
+<audio id="music" loop preload="none"><source src="assets/music/Beautiful In White.mp3" type="audio/mpeg"></audio>
+<button id="musicBtn" class="music-btn" aria-label="Putar musik">♫</button>
+
+<main id="invitation" class="invitation">
+  <section id="home" class="section hero-inner">
+
+  <!-- BACKGROUND FOTO SLIDESHOW -->
+  <div class="home-photo-slideshow" aria-hidden="true">
+    <div class="home-photo-slide active"
+         style="background-image:url('assets/images/21.jpg');"></div>
+
+    <div class="home-photo-slide"
+         style="background-image:url('assets/images/22.jpg');"></div>
+
+    <div class="home-photo-slide"
+         style="background-image:url('assets/images/23.jpg');"></div>
+
+    <div class="home-photo-slide"
+         style="background-image:url('assets/images/24.jpg');"></div>
+
+    <div class="home-photo-slide"
+         style="background-image:url('assets/images/25.jpg');"></div>
+  </div>
+
+  <!-- LAPISAN GELAP AGAR TEKS TERBACA -->
+  <div class="home-photo-overlay"></div>
+
+  <!-- ISI UNDANGAN -->
+  <div class="card-content center home-content">
+
+    <p class="eyebrow">THE WEDDING OF</p>
+
+    <h2 class="display">
+      <span>Vinsensius Anyan</span>
+      <em>&amp;</em>
+      <span>Melania Mela</span>
+    </h2>
+
+    <p class="hero-date">29 · 12 · 2026</p>
+
+    <div class="countdown">
+      <div>
+        <b id="days">00</b>
+        <span>Hari</span>
+      </div>
+
+      <div>
+        <b id="hours">00</b>
+        <span>Jam</span>
+      </div>
+
+      <div>
+        <b id="minutes">00</b>
+        <span>Menit</span>
+      </div>
+
+      <div>
+        <b id="seconds">00</b>
+        <span>Detik</span>
+      </div>
+    </div>
+
+    <div class="thin-rule"></div>
+
+    <h3 class="welcome-title">
+      Welcome To Our Wedding
+    </h3>
+
+    <p class="body">
+      Tuhan membuat segala sesuatu indah pada waktu-Nya,
+      indah saat Dia mempertemukan, indah saat Dia menumbuhkan kasih,
+      dan indah saat Dia mempersatukan kami dalam pernikahan.
+    </p>
+
+  </div>
+
+</section>
+
+  <section id="couple" class="section couple">
+
+  <div class="card-content">
+
+    <article class="profile profile-card reveal">
+
+      <div class="couple-photo-box">
+
+        <div
+          class="portrait-slideshow"
+          data-slideshow="groom">
+        </div>
+
+        <div class="couple-photo-gradient"></div>
+
+        <div class="couple-photo-info">
+          <p class="profile-role">THE GROOM</p>
+
+          <h3>VINSENSIUS ANYAN</h3>
+
+          <p class="parents">
+            Putra Pertama dari<br>
+            <strong>Bapak Harmito &amp; Ibu Ngurah Ari</strong>
+          </p>
+
+          <a href="#" class="couple-instagram">
+            <span class="ig-box"></span>
+            @anyan
+          </a>
+        </div>
+
+      </div>
+
+    </article>
+
+    <div class="profile-amp">&amp;</div>
+
+    <article class="profile profile-card reveal">
+
+      <div class="couple-photo-box">
+
+        <div
+          class="portrait-slideshow"
+          data-slideshow="bride">
+        </div>
+
+        <div class="couple-photo-gradient"></div>
+
+        <div class="couple-photo-info">
+          <p class="profile-role">THE BRIDE</p>
+
+          <h3>MELANIA MELA</h3>
+
+          <p class="parents">
+            Putri Pertama dari<br>
+            <strong>Bapak Nama Ayah &amp; Ibu Nama Ibu</strong>
+          </p>
+
+          <a href="#" class="couple-instagram">
+            <span class="ig-box"></span>
+            @melania
+          </a>
+        </div>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
+
+  <section class="section quote">
+    <div class="card-content quote-card reveal">
+      <p class="eyebrow">OUR PROMISE</p>
+      <h2>Matius 19 : 6</h2>
+      <blockquote>“Demikianlah mereka bukan lagi dua, melainkan satu. Karena itu, apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia.”</blockquote>
+      <span class="quote-mark">“</span>
     </div>
   </section>
-</body>
-</html>
+
+  <section id="event" class="section event">
+    <div class="card-content">
+      <div class="section-heading event-heading"><p class="eyebrow">WEDDING</p><h2>Event</h2></div>
+      <article class="event-card reveal">
+        <div class="event-bg" data-slideshow="event"></div><div class="event-wash"></div>
+        <div class="event-panel">
+          <div class="event-vertical">PEMBERKATAN</div>
+          <div class="event-info">
+            <div class="date-block"><strong>29</strong><span>Selasa<br>Desember<br>2026</span></div>
+            <div class="event-rule"></div>
+            <p class="event-time">● &nbsp;14.00 s/d selesai</p>
+            <h3>Lokasi Acara</h3>
+            <p>Gereja Katedral Sintang<br>Kalimantan Barat</p>
+            <a class="map-btn" href="https://maps.app.goo.gl/BzNDK9eyAYVchNov9" target="_blank" rel="noopener">BUKA MAPS</a>
+          </div>
+        </div>
+      </article>
+      <article class="event-card reveal">
+        <div class="event-bg" data-slideshow="event2"></div><div class="event-wash"></div>
+        <div class="event-panel">
+          <div class="event-vertical">RESEPSI</div>
+          <div class="event-info">
+            <div class="date-block"><strong>29</strong><span>Selasa<br>Desember<br>2026</span></div>
+            <div class="event-rule"></div>
+            <p class="event-time">● &nbsp;18.00 s/d selesai</p>
+            <h3>Kediaman Mempelai Wanita</h3>
+            <p>Jl. Jelora<br>Sintang, Kalimantan Barat</p>
+            <a class="map-btn" href="https://maps.google.com" target="_blank" rel="noopener">BUKA MAPS</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="gallery" class="section gallery">
+    <div class="card-content">
+      <div class="section-heading"><p class="eyebrow">WEDDING</p><h2>Galery</h2></div>
+      <div class="gallery-grid">
+        <figure><img data-slot="photo01" src="assets/images/photo01.svg" alt="Foto 1"></figure>
+        <figure><img data-slot="photo02" src="assets/images/photo02.svg" alt="Foto 2"></figure>
+        <figure class="tall"><img data-slot="photo03" src="assets/images/photo03.svg" alt="Foto 3"></figure>
+        <figure class="tall"><img data-slot="photo04" src="assets/images/photo04.svg" alt="Foto 4"></figure>
+        <figure><img data-slot="photo05" src="assets/images/photo05.svg" alt="Foto 5"></figure>
+        <figure><img data-slot="photo06" src="assets/images/photo06.svg" alt="Foto 6"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section live">
+    <div class="card-content center">
+      <p class="eyebrow">LIVE STREAMING</p>
+      <h2>Saksikan momen kami</h2>
+      <p class="body">Temui kami secara virtual untuk menyaksikan acara pernikahan kami melalui sosial media kami.</p>
+      <a class="map-btn" href="https://youtube.com" target="_blank" rel="noopener">YOUTUBE</a>
+    </div>
+  </section>
+
+  <section class="section gift">
+    <div class="card-content">
+      <div class="section-heading"><p class="eyebrow">WEDDING</p><h2>Gift</h2></div>
+      <p class="body center">Tanpa mengurangi rasa hormat, bagi Anda yang ingin memberikan tanda kasih untuk kami, dapat melalui:</p>
+      <div class="gift-card"><div><span>BCA</span><p>a.n Vinsensius Anyan</p><strong>1234567890</strong></div><button data-copy="1234567890">SALIN NOMOR</button></div>
+      <div class="gift-card"><div><span>MANDIRI</span><p>a.n Melania Mela</p><strong>9876543210</strong></div><button data-copy="9876543210">SALIN NOMOR</button></div>
+      <div class="gift-address"><h3>Kirim Hadiah</h3><p id="giftAddress">Penerima: Nama Penerima<br>Alamat penerima hadiah, Indonesia</p><button data-copy="Penerima: Nama Penerima, Alamat penerima hadiah, Indonesia">SALIN ALAMAT</button></div>
+    </div>
+  </section>
+
+  <section id="rsvp" class="section rsvp">
+    <div class="card-content">
+      <div class="section-heading center"><p class="eyebrow">BERIKAN UCAPAN &amp; DOA</p><h2>RSVP</h2></div>
+      <div class="comments-link"><span id="commentCount">0</span> Comments</div>
+      <div class="stats"><div><strong id="countHadir">0</strong><span>Hadir</span></div><div><strong id="countTidak">0</strong><span>Tidak hadir</span></div><div><strong id="countRagu">0</strong><span>Masih ragu</span></div></div>
+      <form id="rsvpForm" class="rsvp-form" target="google-submit-frame" method="POST" action="https://docs.google.com/forms/d/e/1FAIpQLSewrQIrtwg6Lvj3WRjoi0RL0x5rkvQmG5iFZiww0z3lSnv_aQ/formResponse">
+        <label>Nama*<input required name="entry.290774784" id="rsvpName" autocomplete="name"></label>
+        <label>Kehadiran*<select required name="entry.1318967976" id="rsvpAttendance"><option value="Hadir">Hadir</option><option value="Tidak Hadir">Tidak Hadir</option><option value="Masih Ragu">Masih Ragu</option></select></label>
+        <label>Jumlah Tamu*<select required name="entry.2054287845"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></label>
+        <label>Ucapan*<textarea required name="entry.692446568" rows="4"></textarea></label>
+        <button class="submit-btn" type="submit">KIRIM UCAPAN</button>
+      </form>
+      <iframe name="google-submit-frame" id="google-submit-frame" class="hidden-frame" title="Google Form submit"></iframe>
+      <div id="thanks" class="thanks">Terima kasih atas ucapan dan doanya. ♡</div>
+      <div id="wishesList" class="wishes-list"><p class="empty">Belum ada ucapan.</p></div>
+    </div>
+  </section>
+
+  <section class="section closing"><div class="card-content center"><p class="eyebrow">THANK YOU</p><h2>Vinsensius Anyan<br><em>&amp;</em> Melania Mela</h2><p class="body">Sampai bertemu di hari bahagia kami.</p></div></section>
+</main>
+<footer>© 2026 ANYAN &amp; MELA</footer>
+<div id="toast" class="toast"></div>
+<script src="assets/js/script.js"></script><script src="assets/js/public-gallery.js"></script>
+</body></html>
