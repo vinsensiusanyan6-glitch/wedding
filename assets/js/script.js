@@ -405,47 +405,58 @@ function reveal() {
 
 
 /* =========================================================
-   OPEN INVITATION
+   OPEN INVITATION + AUTO PLAY MUSIC
 ========================================================= */
 
 function openInvitation() {
 
-    const musicElement = $('#music');
-    const openButton = $('#openBtn');
+    const btn = $('#openBtn');
+    const music = $('#music');
+    const musicBtn = $('#musicBtn');
 
-    if (!openButton) return;
+    if (!btn) return;
 
-    openButton.onclick = () => {
+    btn.addEventListener('click', async () => {
 
+        // Buka undangan
         $('#cover')?.classList.add('open');
 
         document.body.classList.remove('locked');
 
-        musicElement
-            ?.play()
-            .then(() => {
-                $('#musicBtn')?.classList.add('playing');
-            })
-            .catch(() => {});
+        // Putar musik setelah klik pengguna
+        if (music) {
 
+            try {
 
-        history.replaceState(
-            null,
-            '',
-            '#home'
-        );
+                await music.play();
 
+                musicBtn?.classList.add('playing');
 
+            } catch (error) {
+
+                console.log('Musik belum bisa diputar:', error);
+
+                musicBtn?.classList.remove('playing');
+
+            }
+
+        }
+
+        // Ubah URL ke bagian home
+        history.replaceState(null, '', '#home');
+
+        // Scroll ke home
         setTimeout(() => {
 
-            document
-                .querySelector('#home')
+            document.querySelector('#home')
                 ?.scrollIntoView({
                     behavior: 'smooth'
                 });
 
         }, 250);
-    };
+
+    });
+
 }
 
 
@@ -765,47 +776,151 @@ window.addEventListener('load', () => {
 
 /* =========================================================
    HOME PHOTO SLIDESHOW
+   FAST LOAD + LAZY PRELOAD
 ========================================================= */
 
-document.addEventListener(
-    'DOMContentLoaded',
-    () => {
+document.addEventListener('DOMContentLoaded', () => {
 
-        const homeSlides =
-            $$('.home-photo-slide');
+    const homeSlides = $$('.home-photo-slide');
 
-        if (!homeSlides.length) return;
+    if (!homeSlides.length) return;
 
+    let currentSlide = 0;
 
-        let currentSlide = 0;
+    const slideDuration = 5000;
 
-        const slideDuration = 5000;
+    /* -----------------------------------------------------
+       Pastikan foto pertama langsung tampil
+    ----------------------------------------------------- */
 
-
-        function showNextHomeSlide() {
-
-            homeSlides[currentSlide]
-                .classList.remove('active');
+    homeSlides.forEach((slide, index) => {
+        slide.classList.toggle('active', index === 0);
+    });
 
 
-            currentSlide++;
+    /* -----------------------------------------------------
+       Ambil URL background image
+    ----------------------------------------------------- */
 
-            if (
-                currentSlide >=
-                homeSlides.length
-            ) {
-                currentSlide = 0;
-            }
+    function getImageUrl(slide) {
+
+        const bg = slide.style.backgroundImage;
+
+        if (!bg) return null;
+
+        const match = bg.match(/url\(["']?(.*?)["']?\)/);
+
+        return match ? match[1] : null;
+    }
 
 
-            homeSlides[currentSlide]
-                .classList.add('active');
+    /* -----------------------------------------------------
+       Preload satu foto berikutnya saja
+       Tidak load semua foto sekaligus
+    ----------------------------------------------------- */
+
+    function preloadNext() {
+
+        const nextIndex =
+            (currentSlide + 1) % homeSlides.length;
+
+        const url =
+            getImageUrl(homeSlides[nextIndex]);
+
+        if (!url) return;
+
+        const img = new Image();
+
+        img.decoding = 'async';
+
+        img.src = url;
+    }
+
+
+    /* -----------------------------------------------------
+       Preload foto kedua setelah halaman tampil
+    ----------------------------------------------------- */
+
+    requestAnimationFrame(() => {
+        setTimeout(preloadNext, 300);
+    });
+
+
+    /* -----------------------------------------------------
+       Slideshow
+    ----------------------------------------------------- */
+
+    function showNextHomeSlide() {
+
+        const oldSlide =
+            homeSlides[currentSlide];
+
+        currentSlide++;
+
+        if (currentSlide >= homeSlides.length) {
+            currentSlide = 0;
         }
 
+        const newSlide =
+            homeSlides[currentSlide];
 
-        setInterval(
-            showNextHomeSlide,
-            slideDuration
-        );
+
+        oldSlide.classList.remove('active');
+
+        newSlide.classList.add('active');
+
+
+        /* preload foto berikutnya */
+
+        preloadNext();
     }
-);
+
+
+    setInterval(
+        showNextHomeSlide,
+        slideDuration
+    );
+
+});
+
+function music() {
+
+    const m = document.getElementById('music');
+    const b = document.getElementById('musicBtn');
+
+    if (!m) return;
+
+    m.volume = 0.7;
+
+    const tryPlay = () => {
+        m.play()
+            .then(() => {
+                b?.classList.add('playing');
+                console.log('MUSIC PLAYING');
+            })
+            .catch(err => {
+                console.log('Autoplay diblokir browser:', err);
+            });
+    };
+
+    // Coba langsung
+    tryPlay();
+
+    // Kalau browser memblokir, coba setelah interaksi
+    ['click', 'touchstart', 'pointerdown'].forEach(event => {
+        document.addEventListener(event, tryPlay, {
+            once: true,
+            passive: true
+        });
+    });
+
+    if (b) {
+        b.onclick = () => {
+            if (m.paused) {
+                m.play();
+            } else {
+                m.pause();
+            }
+        };
+    }
+}
