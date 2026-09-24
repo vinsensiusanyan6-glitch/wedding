@@ -29,6 +29,9 @@ const CONFIG = {
             'assets/images/02.jpg',
             'assets/images/03.jpg',
             'assets/images/06.jpg',
+            'assets/images/01.jpg',
+            'assets/images/02.jpg',
+            'assets/images/03.jpg',
             'assets/images/09.jpg'
         ],
 
