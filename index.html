@@ -1,6 +1,12 @@
 <!doctype html>
 <html lang="id">
 <head>
+  <link
+    rel="preload"
+    as="image"
+    href="assets/images/25.jpg"
+    fetchpriority="high"
+>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#ded3d0">
@@ -28,8 +34,18 @@
   </div>
 </section>
 
-<audio id="music" loop preload="none"><source src="assets/music/Beautiful In White.mp3" type="audio/mpeg"></audio>
-<button id="musicBtn" class="music-btn" aria-label="Putar musik">♫</button>
+<audio
+    id="music"
+    autoplay
+    loop
+    preload="auto"
+    playsinline
+>
+    <source
+        src="assets/music/Beautiful In White.mp3"
+        type="audio/mpeg"
+    >♫
+</audio>
 
 <main id="invitation" class="invitation">
   <section id="home" class="section hero-inner">
