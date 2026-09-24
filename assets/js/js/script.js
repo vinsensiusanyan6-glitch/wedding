@@ -405,47 +405,58 @@ function reveal() {
 
 
 /* =========================================================
-   OPEN INVITATION
+   OPEN INVITATION + AUTO PLAY MUSIC
 ========================================================= */
 
 function openInvitation() {
 
-    const musicElement = $('#music');
-    const openButton = $('#openBtn');
+    const btn = $('#openBtn');
+    const music = $('#music');
+    const musicBtn = $('#musicBtn');
 
-    if (!openButton) return;
+    if (!btn) return;
 
-    openButton.onclick = () => {
+    btn.addEventListener('click', async () => {
 
+        // Buka undangan
         $('#cover')?.classList.add('open');
 
         document.body.classList.remove('locked');
 
-        musicElement
-            ?.play()
-            .then(() => {
-                $('#musicBtn')?.classList.add('playing');
-            })
-            .catch(() => {});
+        // Putar musik setelah klik pengguna
+        if (music) {
 
+            try {
 
-        history.replaceState(
-            null,
-            '',
-            '#home'
-        );
+                await music.play();
 
+                musicBtn?.classList.add('playing');
 
+            } catch (error) {
+
+                console.log('Musik belum bisa diputar:', error);
+
+                musicBtn?.classList.remove('playing');
+
+            }
+
+        }
+
+        // Ubah URL ke bagian home
+        history.replaceState(null, '', '#home');
+
+        // Scroll ke home
         setTimeout(() => {
 
-            document
-                .querySelector('#home')
+            document.querySelector('#home')
                 ?.scrollIntoView({
                     behavior: 'smooth'
                 });
 
         }, 250);
-    };
+
+    });
+
 }
 
 
@@ -871,3 +882,45 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
 });
+
+function music() {
+
+    const m = document.getElementById('music');
+    const b = document.getElementById('musicBtn');
+
+    if (!m) return;
+
+    m.volume = 0.7;
+
+    const tryPlay = () => {
+        m.play()
+            .then(() => {
+                b?.classList.add('playing');
+                console.log('MUSIC PLAYING');
+            })
+            .catch(err => {
+                console.log('Autoplay diblokir browser:', err);
+            });
+    };
+
+    // Coba langsung
+    tryPlay();
+
+    // Kalau browser memblokir, coba setelah interaksi
+    ['click', 'touchstart', 'pointerdown'].forEach(event => {
+        document.addEventListener(event, tryPlay, {
+            once: true,
+            passive: true
+        });
+    });
+
+    if (b) {
+        b.onclick = () => {
+            if (m.paused) {
+                m.play();
+            } else {
+                m.pause();
+            }
+        };
+    }
+}
