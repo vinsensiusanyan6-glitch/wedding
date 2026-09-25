@@ -689,7 +689,7 @@ footer {
     font-size: 7px;
     font-weight: 500;
 
-    letter-spacing: .15em;
+    letter-spacing: .80em;
     text-transform: uppercase;
 }
 
@@ -746,90 +746,70 @@ footer {
 }
 
 
-/* ---------------------------------------------------------
-   COUPLE PHOTO
-   --------------------------------------------------------- */
+
+/* =========================================
+   GROOM & BRIDE - SLOW SMOOTH SLIDESHOW
+========================================= */
 
 .couple-photo-box {
     position: relative;
-
-    width: 100%;
-    height: var(--portrait-height);
-
-    min-height: 680px;
-    max-height: 900px;
-
-    margin: 0;
-    padding: 0;
-
     overflow: hidden;
-
-    background: #222;
-
     isolation: isolate;
+}
+
+.couple-photo-box .portrait-slideshow {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
 }
 
 .couple-photo-box .portrait-slide {
     position: absolute;
     inset: 0;
 
-    width: 100%;
-    height: 100%;
-
-    background-position: center center;
     background-size: cover;
+    background-position: center center;
     background-repeat: no-repeat;
 
     opacity: 0;
-
-    /*
-       Default:
-       Foto berada di luar sebelah kiri
-    */
-    transform: translateX(-100%);
+    transform: translate3d(100%, 0, 0);
 
     transition:
-        transform 1.2s cubic-bezier(.65, 0, .35, 1),
-        opacity .1s linear;
+        transform 2.5s cubic-bezier(0.22, 0.61, 0.36, 1),
+        opacity 1.2s ease;
+
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
-
-/* ---------------------------------------------------------
-   FOTO AKTIF
---------------------------------------------------------- */
-
+/* Foto aktif */
 .couple-photo-box .portrait-slide.active {
     opacity: 1;
-
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
 }
 
-
-/* ---------------------------------------------------------
-   FOTO LAMA → BERGERAK KE KANAN
---------------------------------------------------------- */
-
+/* Foto lama bergerak keluar ke kiri */
 .couple-photo-box .portrait-slide.slide-right {
-    opacity: 1;
-
-    transform: translateX(100%);
-
-    transition:
-        transform 1.2s cubic-bezier(.65, 0, .35, 1);
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
 }
 
-
-/* ---------------------------------------------------------
-   FOTO BERIKUTNYA
-   Mulai dari kiri
---------------------------------------------------------- */
-
+/* Foto berikutnya menunggu di kanan */
 .couple-photo-box .portrait-slide.next-slide {
     opacity: 1;
-
-    transform: translateX(-100%);
+    transform: translate3d(100%, 0, 0);
 }
 
+/* Mobile */
+@media (max-width: 760px) {
+    .couple-photo-box .portrait-slide {
+        background-position: center center;
+        transition:
+            transform 2.5s cubic-bezier(0.22, 0.61, 0.36, 1),
+            opacity 1.2s ease;
+    }
+}
 /* ---------------------------------------------------------
    COUPLE GRADIENT
    --------------------------------------------------------- */
@@ -1942,7 +1922,7 @@ footer {
     }
 
     #home .welcome-title {
-        margin-top: clamp(34px, 6vh, 52px) !important;
+        margin-top: clamp(45px, 6vh, 52px) !important;
         margin-bottom: 10px !important;
 
         font-size: clamp(23px, 7vw, 28px) !important;
@@ -2206,7 +2186,7 @@ footer {
     }
 
     #home .welcome-title {
-        margin-top: 30px !important;
+        margin-top: 45px !important;
 
         font-size: 23px !important;
     }
@@ -2426,5 +2406,48 @@ footer {
 @keyframes pulse {
     50% {
         transform: scale(1.08);
+    }
+}
+
+/* =========================================================
+   COUPLE SLIDESHOW - PERFORMANCE POLISH
+   Khusus foto groom & bride
+   ========================================================= */
+.couple-photo-box {
+    overflow: hidden;
+    isolation: isolate;
+    background-color: #222;
+}
+
+.couple-photo-box .portrait-slideshow {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.couple-photo-box .portrait-slide {
+    pointer-events: none;
+}
+
+.couple-photo-box .portrait-slide.active,
+.couple-photo-box .portrait-slide.slide-right,
+.couple-photo-box .portrait-slide.next-slide {
+    pointer-events: none;
+}
+
+/* Kurangi efek berat pada perangkat yang memilih gerakan minimal */
+@media (prefers-reduced-motion: reduce) {
+    .couple-photo-box .portrait-slide,
+    .couple-photo-box .portrait-slide.slide-right {
+        transition-duration: 1ms;
+    }
+}
+
+/* Di layar sentuh, hilangkan blur panel yang bisa membebani GPU */
+@media (max-width: 760px) {
+    .couple-photo-info {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
     }
 }
