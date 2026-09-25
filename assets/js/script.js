@@ -17,40 +17,40 @@ const CONFIG = {
 
     slides: {
         cover: [
-            'assets/images/25.jpg',
-            'assets/images/24.jpg',
-            'assets/images/21.jpg',
-            'assets/images/20.jpg',
-            'assets/images/30.jpg'
+            'assets/images/25.webp',
+            'assets/images/24.webp',
+            'assets/images/21.webp',
+            'assets/images/20.webp',
+            'assets/images/30.webp'
         ],
 
         groom: [
-            'assets/images/01.jpg',
-            'assets/images/02.jpg',
-            'assets/images/03.jpg',
-            'assets/images/06.jpg',
-            'assets/images/09.jpg'
+            'assets/images/01.webp',
+            'assets/images/02.webp',
+            'assets/images/03.webp',
+            'assets/images/06.webp',
+            'assets/images/09.webp'
         ],
 
         bride: [
-            'assets/images/10.jpg',
-            'assets/images/11.jpg',
-            'assets/images/12.jpg',
-            'assets/images/13.jpg'
+            'assets/images/10.webp',
+            'assets/images/11.webp',
+            'assets/images/12.webp',
+            'assets/images/13.webp'
         ],
 
         event: [
-            'assets/images/30.jpg',
-            'assets/images/31.jpg',
-            'assets/images/33.jpg',
-            'assets/images/29.jpg'
+            'assets/images/30.webp',
+            'assets/images/31.webp',
+            'assets/images/32.webp',
+            'assets/images/29.webp'
         ],
 
         event2: [
-            'assets/images/22.jpg',
-            'assets/images/23.jpg',
-            'assets/images/24.jpg',
-            'assets/images/25.jpg'
+            'assets/images/21.webp',
+            'assets/images/22.webpg',
+            'assets/images/23.webp',
+            'assets/images/24.webp'
         ]
     }
 };
