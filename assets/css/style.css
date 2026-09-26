@@ -707,534 +707,1336 @@ footer {
 
 
 /* =========================================================
-   10. COUPLE
-   FULL PORTRAIT
-   ========================================================= */
-
-.couple {
-    position: relative;
-
-    width: 100%;
-
-    margin: 0;
-    padding: 0;
-
-    background: #e8dfde;
-}
-
-.couple .section-heading {
-    display: none !important;
-}
-
-.couple .card-content {
-    width: 100%;
-
-    margin: 0;
-    padding: 0 !important;
-}
-
-.couple .profile-card {
-    width: 100%;
-    max-width: none;
-
-    margin: 0;
-    padding: 0;
-}
-
-.couple .profile-amp {
-    display: none !important;
-}
-
-
-
-/* =========================================
-   GROOM & BRIDE - SLOW SMOOTH SLIDESHOW
-========================================= */
+   COUPLE PHOTO SLIDESHOW
+   MULTI PHOTO + SMOOTH PAN RIGHT
+========================================================= */
 
 .couple-photo-box {
     position: relative;
     overflow: hidden;
-    isolation: isolate;
+    background: #111;
 }
 
-.couple-photo-box .portrait-slideshow {
+
+/* Container slideshow */
+.portrait-slideshow {
     position: absolute;
     inset: 0;
     overflow: hidden;
+    z-index: 1;
+    background: #111;
 }
 
-.couple-photo-box .portrait-slide {
+
+/* Setiap foto */
+.portrait-slideshow .portrait-slide {
+    position: absolute;
+
+    top: -7%;
+    bottom: -7%;
+    left: -12%;
+
+    width: 124%;
+    height: 114%;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    opacity: 0;
+
+    transform: translate3d(-6%, 0, 0) scale(1.04);
+
+    will-change: transform, opacity;
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    animation:
+        couplePhotoMove 12s ease-in-out infinite,
+        couplePhotoFade 12s linear infinite;
+}
+
+
+/* Gerakan foto hanya ke kanan */
+@keyframes couplePhotoMove {
+
+    0% {
+        transform:
+            translate3d(-6%, 0, 0)
+            scale(1.04);
+    }
+
+    100% {
+        transform:
+            translate3d(6%, 0, 0)
+            scale(1.04);
+    }
+
+}
+
+
+/* Pergantian foto dibuat sangat halus */
+@keyframes couplePhotoFade {
+
+    0%,
+    8% {
+        opacity: 0;
+    }
+
+    15%,
+    42% {
+        opacity: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 0;
+    }
+
+}
+
+
+/* Foto pertama */
+.portrait-slideshow .portrait-slide:nth-child(1) {
+    animation-delay: 0s;
+}
+
+
+/* Foto kedua */
+.portrait-slideshow .portrait-slide:nth-child(2) {
+    animation-delay: 4s;
+}
+
+
+/* Foto ketiga */
+.portrait-slideshow .portrait-slide:nth-child(3) {
+    animation-delay: 8s;
+}
+
+
+/* =========================================================
+   PENTING
+   JANGAN SAMPAI ADA GARIS HITAM
+========================================================= */
+
+.portrait-slideshow .portrait-slide {
+    min-width: 124%;
+    min-height: 114%;
+}
+
+
+/* Gradient tetap di atas foto */
+.couple-photo-gradient {
     position: absolute;
     inset: 0;
 
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
+    z-index: 2;
 
-    opacity: 0;
-    transform: translate3d(100%, 0, 0);
-
-    transition:
-        transform 2.5s cubic-bezier(0.22, 0.61, 0.36, 1),
-        opacity 1.2s ease;
-
-    will-change: transform, opacity;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
+    pointer-events: none;
 }
 
-/* Foto aktif */
-.couple-photo-box .portrait-slide.active {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-}
 
-/* Foto lama bergerak keluar ke kiri */
-.couple-photo-box .portrait-slide.slide-right {
-    opacity: 0;
-    transform: translate3d(-100%, 0, 0);
-}
-
-/* Foto berikutnya menunggu di kanan */
-.couple-photo-box .portrait-slide.next-slide {
-    opacity: 1;
-    transform: translate3d(100%, 0, 0);
-}
-
-/* Mobile */
-@media (max-width: 760px) {
-    .couple-photo-box .portrait-slide {
-        background-position: center center;
-        transition:
-            transform 2.5s cubic-bezier(0.22, 0.61, 0.36, 1),
-            opacity 1.2s ease;
-    }
-}
-/* ---------------------------------------------------------
-   COUPLE GRADIENT
-   --------------------------------------------------------- */
-
-.couple-photo-gradient {
+/* Text di atas foto */
+.couple-photo-info {
     position: absolute;
 
     left: 0;
     right: 0;
     bottom: 0;
 
-    z-index: 2;
+    z-index: 3;
+
+    padding: 45px 25px 35px;
+
+    text-align: center;
+}
+
+
+/* Nama putih */
+.couple-photo-info {
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   COUPLE - FULL SCREEN
+========================================================= */
+
+#couple {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#couple .card-content {
+    width: 100%;
+    max-width: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+/* ==============================
+   SETIAP PROFILE FULL SCREEN
+============================== */
+
+#couple .profile {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#couple .couple-photo-box {
+    position: relative;
 
     width: 100%;
-    height: 48%;
+    height: 100svh;
+
+    min-height: 650px;
+
+    margin: 0;
+    padding: 0;
+
+    overflow: hidden;
+
+    border-radius: 0;
+
+    background: #111;
+}
+
+
+/* ==============================
+   FOTO
+============================== */
+
+#couple .portrait-slideshow {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background: #111;
+
+    z-index: 1;
+}
+
+
+#couple .portrait-slideshow .portrait-slide {
+    position: absolute;
+
+    top: -7%;
+    left: -12%;
+
+    width: 124%;
+    height: 114%;
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    transform: translate3d(-5%, 0, 0) scale(1.04);
+
+    will-change: transform, opacity;
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+
+/* ==============================
+   GRADIENT
+============================== */
+
+#couple .couple-photo-gradient {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
 
     pointer-events: none;
 
     background:
         linear-gradient(
-            to top,
-            rgba(0, 0, 0, .90) 0%,
-            rgba(0, 0, 0, .65) 35%,
-            rgba(0, 0, 0, .25) 70%,
-            transparent 100%
+            to bottom,
+            rgba(0,0,0,0.05) 35%,
+            rgba(0,0,0,0.15) 55%,
+            rgba(0,0,0,0.82) 100%
         );
 }
 
 
-/* ---------------------------------------------------------
-   COUPLE INFO PANEL
-   --------------------------------------------------------- */
+/* ==============================
+   TEXT
+============================== */
 
-.couple-photo-info {
+#couple .couple-photo-info {
     position: absolute;
 
     left: 0;
-    right: 25px;
-    bottom: 25px;
+    right: 0;
+    bottom: 0;
 
-    z-index: 5;
+    z-index: 3;
 
-    padding: 20px 28px 20px 32px;
+    width: 100%;
 
-    color: #fff !important;
+    padding:
+        60px 25px
+        45px;
 
-    text-align: left !important;
+    box-sizing: border-box;
 
-    background: rgba(30, 30, 30, .78);
-
-    border-radius: 0 22px 22px 0;
-
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    text-align: center;
 }
 
-.couple-photo-info * {
-    color: #fff !important;
-}
 
-.couple-photo-info .profile-role {
-    margin: 0 0 7px;
+#couple .couple-photo-info h3 {
+    color: #ffffff !important;
 
-    font-family: var(--sans);
-    font-size: 9px;
-    font-weight: 500;
-
-    letter-spacing: .28em;
-
-    text-align: left !important;
-}
-
-.couple-photo-info h3 {
-    margin: 0 0 8px;
-
-    font-family: var(--serif);
-    font-size: 28px;
-    font-weight: 500;
-    font-style: italic;
-
+    font-size: 32px;
     line-height: 1.1;
 
-    text-align: left !important;
-}
+    font-weight: 500;
 
-.couple-photo-info .parents {
-    margin: 0;
+    letter-spacing: 0.06em;
 
-    font-family: var(--serif);
-    font-size: 14px;
+    margin: 8px 0 14px;
 
-    line-height: 1.35;
-
-    text-align: left !important;
+    text-shadow:
+        0 2px 12px rgba(0,0,0,0.75);
 }
 
 
-/* ---------------------------------------------------------
-   INSTAGRAM
-   --------------------------------------------------------- */
+#couple .profile-role {
+    color: rgba(255,255,255,0.9);
 
-.couple-instagram {
-    display: flex !important;
-
-    width: max-content !important;
-
-    margin: 12px 0 0 !important;
-    padding: 7px 18px;
-
-    align-items: center;
-    gap: 8px;
-
-    color: #fff !important;
-
-    font-family: var(--sans);
-    font-size: 10px;
-
-    text-decoration: none;
-
-    background: rgba(90, 90, 90, .9);
-
-    border-radius: 30px;
+    letter-spacing: 0.3em;
 }
 
-.ig-box {
-    position: relative;
 
-    display: inline-block;
+#couple .parents {
+    color: rgba(255,255,255,0.9);
 
-    width: 16px;
-    height: 16px;
-
-    border: 1.5px solid #fff;
-
-    border-radius: 5px;
+    line-height: 1.6;
 }
 
-.ig-box::before {
-    content: '';
 
-    position: absolute;
+/* ==============================
+   & DIHILANGKAN DARI TENGAH
+============================== */
 
-    left: 3.5px;
-    top: 3.5px;
-
-    width: 6px;
-    height: 6px;
-
-    border: 1.5px solid #fff;
-
-    border-radius: 50%;
+#couple .profile-amp {
+    display: none;
 }
 
-.ig-box::after {
-    content: '';
 
-    position: absolute;
+/* ==============================
+   MOBILE
+============================== */
 
-    right: 2px;
-    top: 2px;
+@media (max-width: 600px) {
 
-    width: 2.5px;
-    height: 2.5px;
+    #couple .couple-photo-info h3 {
+        font-size: 28px;
+        line-height: 1.1;
+        letter-spacing: 0.05em;
+        margin: 7px 0 12px;
+    }
 
-    background: #fff;
-
-    border-radius: 50%;
 }
 
 
 /* =========================================================
-   11. EVENT
-   PEMENUHAN HUKUM ADAT + RESEPSI
-   ========================================================= */
+   HP KECIL
+========================================================= */
 
-.event {
+@media (max-width: 420px) {
+
+    .couple-photo-box {
+
+        height: 100svh;
+
+        min-height: 620px;
+    }
+
+    .portrait-slideshow .portrait-slide {
+
+        left: -17%;
+
+        width: 134%;
+    }
+}
+
+
+/* =========================================================
+   REDUCE MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .portrait-slideshow .portrait-slide {
+
+        animation: none;
+
+        transform: scale(1.03);
+    }
+}
+
+/* =========================================================
+   QUOTE / OUR PROMISE
+========================================================= */
+
+.quote {
     position: relative;
 
+    min-height: 100vh;
     width: 100%;
-
-    margin: 0;
-    padding: 0;
-
-    background: var(--paper2);
-}
-
-.event .card-content {
-    width: 100%;
-
-    margin: 0;
-
-    padding: 70px 68px;
-}
-
-.event-heading {
-    margin-bottom: 28px;
-}
-
-
-/* ---------------------------------------------------------
-   EVENT CARD
-   --------------------------------------------------------- */
-
-.event-card {
-    position: relative;
-
-    width: 100%;
-    height: var(--portrait-height);
-
-    min-height: 680px;
-    max-height: 900px;
-
-    margin: 0 auto 24px;
 
     overflow: hidden;
 
-    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 100px 20px;
+}
+
+
+/* =========================================================
+   BACKGROUND CONTAINER
+========================================================= */
+
+.quote-background {
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    z-index: 0;
+}
+
+
+/* =========================================================
+   BACKGROUND PHOTO
+========================================================= */
+
+.quote-bg {
+    position: absolute;
+
+    inset: -8%;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    opacity: 0;
+
+    transform:
+        scale(1.08)
+        translate3d(0, 8%, 0);
+
+    animation:
+        quotePhotoMove 32s
+        ease-in-out
+        infinite;
+
+    will-change:
+        opacity,
+        transform;
+}
+
+
+/* =========================================================
+   FOTO 1
+========================================================= */
+
+.quote-bg-1 {
+    background-image:
+        url("../images/couple/24.avif");
+
+    animation-delay: 0s;
+}
+
+
+/* =========================================================
+   FOTO 2
+========================================================= */
+
+.quote-bg-2 {
+    background-image:
+        url("../images/couple/25.avif");
+
+    animation-delay: 8s;
+}
+
+
+/* =========================================================
+   FOTO 3
+========================================================= */
+
+.quote-bg-3 {
+    background-image:
+        url("../image/couple/26.avif");
+
+    animation-delay: 16s;
+}
+
+
+/* =========================================================
+   FOTO 4
+========================================================= */
+
+.quote-bg-4 {
+    background-image:
+        url("../images/couple/27.avif");
+
+    animation-delay: 24s;
+}
+
+
+/* =========================================================
+   FOTO FADE + GERAK KE ATAS
+========================================================= */
+
+@keyframes quotePhotoMove {
+
+    /* awal */
+    0% {
+        opacity: 0;
+
+        transform:
+            scale(1.08)
+            translate3d(0, 8%, 0);
+    }
+
+    /* mulai muncul */
+    8% {
+        opacity: 1;
+    }
+
+    /* foto terlihat */
+    20% {
+        opacity: 1;
+
+        transform:
+            scale(1.13)
+            translate3d(0, -2%, 0);
+    }
+
+    /* mulai menghilang */
+    28% {
+        opacity: 0;
+
+        transform:
+            scale(1.16)
+            translate3d(0, -7%, 0);
+    }
+
+    /* selesai */
+    100% {
+        opacity: 0;
+
+        transform:
+            scale(1.16)
+            translate3d(0, -7%, 0);
+    }
+}
+
+
+/* =========================================================
+   DARK OVERLAY
+========================================================= */
+
+.quote-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,0.62),
+            rgba(0,0,0,0.42),
+            rgba(0,0,0,0.68)
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   QUOTE CARD
+========================================================= */
+
+.quote-card {
+    position: relative;
+
+    z-index: 2;
+
+    width: min(800px, 100%);
+
+    padding:
+        65px 55px;
+
+    text-align: center;
+
+    background:
+        rgba(20, 16, 12, 0.30);
+
+    border:
+        1px solid rgba(255,255,255,0.25);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 
     box-shadow:
-        0 14px 28px rgba(30, 20, 20, .09);
-
-    isolation: isolate;
-}
-
-.event-card:last-child {
-    margin-bottom: 0;
+        0 30px 90px rgba(0,0,0,0.30);
 }
 
 
-/* ---------------------------------------------------------
-   EVENT BACKGROUND
-   --------------------------------------------------------- */
+/* =========================================================
+   EYEBROW
+========================================================= */
 
-.event-bg {
+.quote-card .eyebrow {
+    margin-bottom: 18px;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    color:
+        rgba(255,255,255,0.72);
+}
+
+
+/* =========================================================
+   AYAT
+========================================================= */
+
+.quote-card h2 {
+    margin: 0 0 30px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(42px, 6vw, 68px);
+
+    font-weight: 400;
+
+    color: #fff;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   QUOTE TEXT
+========================================================= */
+
+.quote-card blockquote {
+    position: relative;
+
+    margin: 0 auto;
+
+    max-width: 650px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(20px, 2.5vw, 28px);
+
+    line-height: 1.65;
+
+    font-style: italic;
+
+    color:
+        rgba(255,255,255,0.92);
+}
+
+
+/* =========================================================
+   QUOTE MARK
+========================================================= */
+
+.quote-mark {
+    display: block;
+
+    margin-top: 30px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 65px;
+
+    line-height: 0.5;
+
+    color: #e5c58d;
+
+    opacity: 0.85;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .quote {
+        min-height: 100svh;
+
+        padding:
+            70px 18px;
+    }
+
+    .quote-card {
+        padding:
+            45px 25px;
+    }
+
+    .quote-card .eyebrow {
+        font-size: 9px;
+
+        letter-spacing: 3px;
+    }
+
+    .quote-card h2 {
+        font-size: 46px;
+
+        margin-bottom: 25px;
+    }
+
+    .quote-card blockquote {
+        font-size: 21px;
+
+        line-height: 1.55;
+    }
+
+    .quote-mark {
+        font-size: 55px;
+    }
+
+    .quote-bg {
+        inset: -12%;
+    }
+}
+
+
+/* =========================================================
+   REDUCE MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .quote-bg {
+        animation: none;
+    }
+
+    .quote-bg-1 {
+        opacity: 1;
+
+        transform: scale(1.08);
+    }
+}
+
+/* =========================================================
+   WEDDING EVENT
+========================================================= */
+
+.wedding-event {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 100px 20px;
+}
+
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.event-background {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.event-bg-slide {
+    position: absolute;
+    inset: -6%;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    opacity: 0;
+
+    transform: scale(1.08);
+
+    animation:
+        eventPhotoFade 32s infinite,
+        eventPhotoMove 32s ease-in-out infinite;
+
+    will-change: opacity, transform;
+}
+
+
+/* FOTO 1 */
+
+.event-bg-1 {
+    background-image:
+        url("../images/couple/29.avif");
+
+    animation-delay: 0s;
+}
+
+
+/* FOTO 2 */
+
+.event-bg-2 {
+    background-image:
+        url("../images/couple/30.avif");
+
+    animation-delay: 8s;
+}
+
+
+/* FOTO 3 */
+
+.event-bg-3 {
+    background-image:
+        url("../images/couple/31.avif");
+
+    animation-delay: 16s;
+}
+
+
+/* FOTO 4 */
+
+.event-bg-4 {
+    background-image:
+        url("../images/couple/32.avif");
+
+    animation-delay: 24s;
+}
+
+
+/* =========================================================
+   FOTO CROSSFADE
+========================================================= */
+
+@keyframes eventPhotoFade {
+
+    0% {
+        opacity: 0;
+    }
+
+    8% {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    33% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   GERAKAN FOTO
+========================================================= */
+
+@keyframes eventPhotoMove {
+
+    0% {
+        transform:
+            scale(1.08)
+            translate3d(-1%, 0%, 0);
+    }
+
+    50% {
+        transform:
+            scale(1.14)
+            translate3d(1%, -1%, 0);
+    }
+
+    100% {
+        transform:
+            scale(1.10)
+            translate3d(-1%, 1%, 0);
+    }
+}
+
+
+/* =========================================================
+   OVERLAY
+========================================================= */
+
+.event-background-overlay {
     position: absolute;
     inset: 0;
 
     z-index: 1;
 
-    width: 100%;
-    height: 100%;
-
-    overflow: hidden;
-}
-
-.event-bg .event-bg-slide {
-    position: absolute;
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-
-    opacity: 0;
-
-    transform: scale(1.035);
-
-    transition:
-        opacity 1.5s ease,
-        transform 7s ease;
-}
-
-.event-bg .event-bg-slide.active {
-    opacity: 1;
-
-    transform: scale(1);
-}
-
-
-/* ---------------------------------------------------------
-   EVENT WASH
-   --------------------------------------------------------- */
-
-.event-wash {
-    position: absolute;
-    inset: 0;
-
-    z-index: 2;
-
-    pointer-events: none;
-
     background:
         linear-gradient(
             180deg,
-            rgba(246, 239, 237, .55),
-            rgba(246, 239, 237, .78) 55%,
-            rgba(246, 239, 237, .90)
+            rgba(0, 0, 0, 0.58),
+            rgba(0, 0, 0, 0.40),
+            rgba(0, 0, 0, 0.65)
         );
 }
 
 
-/* ---------------------------------------------------------
-   EVENT PANEL
-   --------------------------------------------------------- */
+/* =========================================================
+   CONTENT
+========================================================= */
 
-.event-panel {
-    position: absolute;
-    inset: 0;
+.event-container {
+    position: relative;
+    z-index: 2;
 
-    z-index: 5;
-
-    display: grid;
-
-    grid-template-columns: 70px 1fr;
-}
-
-
-/* ---------------------------------------------------------
-   EVENT VERTICAL TITLE
-   --------------------------------------------------------- */
-
-.event-vertical {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 18px 0;
-
-    background: rgba(80, 78, 78, .68);
-    color: #fff;
-
-    writing-mode: vertical-rl;
-
-    transform: rotate(180deg);
-
-    font-family: var(--serif);
-    font-size: 24px;
-    font-style: italic;
-
-    letter-spacing: .04em;
-}
-
-
-/* ---------------------------------------------------------
-   EVENT INFO
-   --------------------------------------------------------- */
-
-.event-info {
     width: 100%;
-    height: 100%;
+    max-width: 1150px;
 
-    padding: 68px 38px;
+    margin: auto;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    text-align: center;
 }
 
-.date-block {
-    display: flex;
 
-    align-items: center;
+/* =========================================================
+   HEADING
+========================================================= */
 
-    gap: 20px;
+.event-heading {
+    max-width: 700px;
+    margin: 0 auto 55px;
 }
 
-.date-block strong {
-    font-family: var(--serif);
-    font-size: 74px;
-    font-style: italic;
-    font-weight: 400;
+.event-heading span {
+    display: block;
 
-    line-height: .8;
-}
-
-.date-block span {
-    font-size: 15px;
-
-    line-height: 1.2;
-
-    letter-spacing: .06em;
-}
-
-.event-rule {
-    width: 100%;
-
-    margin: 24px 0 13px;
-
-    border-top: 1px solid var(--line);
-}
-
-.event-time {
-    margin: 0 0 34px;
+    font-family: "Montserrat", sans-serif;
 
     font-size: 12px;
+    letter-spacing: 5px;
+
+    color: rgba(255,255,255,0.75);
+
+    margin-bottom: 10px;
 }
 
-.event-info h3 {
-    margin: 0 0 24px;
+.event-heading h2 {
+    margin: 0;
 
-    font-family: var(--sans);
-    font-size: 19px;
-    font-weight: 600;
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(48px, 7vw, 82px);
+
+    font-weight: 400;
+
+    color: #fff;
+
+    line-height: 0.9;
 }
 
-.event-info p:not(.event-time) {
-    color: #514b4a;
+.event-heading p {
+    margin: 25px auto 0;
 
-    font-size: 11px;
-    line-height: 1.8;
+    max-width: 600px;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 13px;
+    line-height: 1.9;
+
+    color: rgba(255,255,255,0.82);
 }
 
-.map-btn {
-    display: inline-block;
 
-    width: max-content;
+/* =========================================================
+   EVENT CARDS
+========================================================= */
 
-    margin-top: 12px;
-    padding: 11px 22px;
+.event-cards {
+    display: grid;
 
-    border: 1px solid #222;
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
 
-    background: rgba(255, 255, 255, .18);
+    gap: 30px;
 
-    color: #222;
+    max-width: 900px;
+
+    margin: auto;
+}
+
+
+/* =========================================================
+   EVENT CARD - TRANSPARENT GLASS
+========================================================= */
+
+.event-card {
+    position: relative;
+
+    /* LEBIH TRANSPARAN */
+    background: rgba(255, 255, 255, 0.015) !important;
+
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+
+    border: 1px solid rgba(255, 255, 255, 0.20);
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10);
+
+    color: #fff;
+    overflow: hidden;
+}
+
+
+/* garis cahaya tipis di bagian atas */
+
+.event-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 15%;
+
+    width: 70%;
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.7),
+        transparent
+    );
+
+    opacity: 0.7;
+}
+
+
+/* Hover desktop */
+
+.event-card:hover {
+    background: rgba(255, 255, 255, 0.07) !important;
+
+    border-color:
+        rgba(255, 255, 255, 0.4);
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   TEXT EVENT
+========================================================= */
+
+.event-card h3 {
+    color: #ffffff;
+
+    text-shadow:
+        0 2px 10px rgba(0,0,0,0.55);
+}
+
+
+.event-card p {
+    color:
+        rgba(255,255,255,0.85);
+
+    text-shadow:
+        0 1px 7px rgba(0,0,0,0.5);
+}
+
+
+/* =========================================================
+   TOMBOL / LINK EVENT
+========================================================= */
+
+.event-card a,
+.event-card button {
+    background: rgba(255,255,255,0.08);
+
+    border: 1px solid
+        rgba(255,255,255,0.35);
+
+    color: #ffffff;
+
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+
+.event-card a:hover,
+.event-card button:hover {
+    background: rgba(255,255,255,0.20);
+
+    border-color: #ffffff;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .event-card {
+        background: rgba(255,255,255,0.035) !important;
+
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+
+        border-color:
+            rgba(255,255,255,0.25);
+    }
+
+}
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.event-card-label {
+    display: block;
+
+    font-family: "Montserrat", sans-serif;
 
     font-size: 10px;
 
-    letter-spacing: .18em;
+    letter-spacing: 3px;
+
+    color: rgba(255,255,255,0.65);
+
+    margin-bottom: 10px;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.event-card h3 {
+    margin: 0;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 42px;
+
+    font-weight: 400;
+
+    color: #fff;
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.event-divider {
+    width: 45px;
+    height: 1px;
+
+    margin: 22px auto;
+
+    background: #e6c58c;
+}
+
+
+/* =========================================================
+   DATE
+========================================================= */
+
+.event-date {
+    margin: 0 0 8px;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 13px;
+
+    color: #fff;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================================================
+   TIME
+========================================================= */
+
+.event-time {
+    margin: 0 0 25px;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 12px;
+
+    color: rgba(255,255,255,0.72);
+}
+
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+.event-location {
+    margin: 0 0 28px;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+
+    color: rgba(255,255,255,0.78);
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.event-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 145px;
+
+    padding: 11px 22px;
+
+    border:
+        1px solid rgba(255,215,160,0.7);
+
+    color: #f5d9a5;
 
     text-decoration: none;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+.event-button:hover {
+    background: #f5d9a5;
+    color: #17120c;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .wedding-event {
+        min-height: auto;
+
+        padding:
+            85px 18px
+            90px;
+    }
+
+    .event-heading {
+        margin-bottom: 40px;
+    }
+
+    .event-heading h2 {
+        font-size: 56px;
+    }
+
+    .event-heading p {
+        font-size: 11px;
+
+        padding: 0 10px;
+    }
+
+    .event-cards {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+
+        max-width: 500px;
+    }
+
+    .event-card {
+        padding:
+            40px 25px;
+    }
+
+    .event-card h3 {
+        font-size: 38px;
+    }
+
+    .event-bg-slide {
+        inset: -10%;
+
+        background-position: center center;
+    }
+}
+
+
+/* =========================================================
+   REDUCE MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .event-bg-slide {
+        animation: none;
+        opacity: 0;
+    }
+
+    .event-bg-1 {
+        opacity: 1;
+    }
+
+    .event-card {
+        transition: none;
+    }
 }
 
 
@@ -1302,34 +2104,303 @@ footer {
 
 
 /* =========================================================
-   13. GALLERY
-   ========================================================= */
+   GALLERY
+========================================================= */
 
 .gallery {
-    background: #eee6e4;
-}
+    position: relative;
 
-.gallery-grid {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 8px;
-}
-
-.gallery-grid figure {
-    margin: 0;
-
-    aspect-ratio: 1 / 1.22;
+    width: 100%;
+    min-height: 100vh;
 
     overflow: hidden;
 
-    background: #cbbebe;
+    padding:
+        100px 20px;
 }
 
-.gallery-grid figure.tall {
-    aspect-ratio: 1 / 1.55;
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.gallery-background {
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    z-index: 0;
 }
+
+
+/* =========================================================
+   BACKGROUND PHOTO
+========================================================= */
+
+.gallery-bg-slide {
+    position: absolute;
+
+    inset: -10%;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    opacity: 0;
+
+    transform:
+        scale(1.10)
+        translate3d(0, 12%, 0);
+
+    animation:
+        galleryBackgroundMove
+        36s
+        ease-in-out
+        infinite;
+
+    will-change:
+        opacity,
+        transform;
+}
+
+
+/* =========================================================
+   FOTO BACKGROUND 1
+========================================================= */
+
+.gallery-bg-1 {
+    background-image:
+        url("../images/couple/20.avif");
+
+    animation-delay: 0s;
+}
+
+
+/* =========================================================
+   FOTO BACKGROUND 2
+========================================================= */
+
+.gallery-bg-2 {
+    background-image:
+        url("../images/couple/20.avif");
+
+    animation-delay: 9s;
+}
+
+
+/* =========================================================
+   FOTO BACKGROUND 3
+========================================================= */
+
+.gallery-bg-3 {
+    background-image:
+        url("../images/couple/21.avif");
+
+    animation-delay: 18s;
+}
+
+
+/* =========================================================
+   FOTO BACKGROUND 4
+========================================================= */
+
+.gallery-bg-4 {
+    background-image:
+        url("../images/couple/22.avif");
+
+    animation-delay: 27s;
+}
+
+
+/* =========================================================
+   SLIDE KE ATAS + FADE
+========================================================= */
+
+@keyframes galleryBackgroundMove {
+
+    /* mulai dari bawah */
+    0% {
+
+        opacity: 0;
+
+        transform:
+            scale(1.10)
+            translate3d(0, 12%, 0);
+    }
+
+
+    /* mulai muncul */
+    7% {
+
+        opacity: 1;
+
+        transform:
+            scale(1.10)
+            translate3d(0, 8%, 0);
+    }
+
+
+    /* bergerak perlahan ke atas */
+    20% {
+
+        opacity: 1;
+
+        transform:
+            scale(1.15)
+            translate3d(0, -2%, 0);
+    }
+
+
+    /* terus naik */
+    29% {
+
+        opacity: 0;
+
+        transform:
+            scale(1.18)
+            translate3d(0, -9%, 0);
+    }
+
+
+    /* menunggu pergantian */
+    100% {
+
+        opacity: 0;
+
+        transform:
+            scale(1.18)
+            translate3d(0, -9%, 0);
+    }
+}
+
+
+/* =========================================================
+   DARK OVERLAY
+========================================================= */
+
+.gallery-background-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.62),
+            rgba(0, 0, 0, 0.35),
+            rgba(0, 0, 0, 0.68)
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   GALLERY CONTENT
+========================================================= */
+
+.gallery > .card-content {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   GALLERY HEADING
+========================================================= */
+
+.gallery .section-heading {
+    position: relative;
+
+    z-index: 3;
+
+    text-align: center;
+
+    margin-bottom: 45px;
+}
+
+
+.gallery .section-heading .eyebrow {
+    margin-bottom: 10px;
+}
+
+
+.gallery .section-heading h2 {
+    margin: 0;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(48px, 7vw, 80px);
+
+    font-weight: 400;
+
+    color: #fff;
+}
+
+
+/* =========================================================
+   GALLERY GRID
+========================================================= */
+
+.gallery-grid {
+    position: relative;
+
+    z-index: 3;
+
+    width: min(1100px, 100%);
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+
+/* =========================================================
+   GALLERY ITEM
+========================================================= */
+
+.gallery-grid figure {
+    position: relative;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    border-radius: 4px;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.20);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,0.30);
+
+    aspect-ratio: 3 / 4;
+}
+
+
+/* =========================================================
+   FOTO
+========================================================= */
 
 .gallery-grid img {
     display: block;
@@ -1339,111 +2410,547 @@ footer {
 
     object-fit: cover;
 
-    transition: transform .8s;
+    transition:
+        transform 1.2s
+        cubic-bezier(.22,.61,.36,1),
+        filter 0.8s ease;
 }
+
+
+/* =========================================================
+   HOVER FOTO
+========================================================= */
 
 .gallery-grid figure:hover img {
-    transform: scale(1.035);
+
+    transform:
+        scale(1.07);
+
+    filter:
+        brightness(1.08);
 }
 
 
 /* =========================================================
-   14. LIVE
-   ========================================================= */
+   BORDER GLOW
+========================================================= */
 
-.live {
-    min-height: 410px;
+.gallery-grid figure::after {
 
-    display: flex;
-    align-items: center;
+    content: "";
 
-    background: #e3d9d7;
+    position: absolute;
+
+    inset: 0;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.18);
+
+    pointer-events: none;
+
+    transition:
+        border-color 0.5s ease;
 }
 
-.live h2 {
-    margin: 0 0 15px;
 
-    font-family: var(--serif);
-    font-size: 44px;
-    font-weight: 500;
+.gallery-grid figure:hover::after {
+
+    border-color:
+        rgba(230,197,141,0.65);
 }
 
 
 /* =========================================================
-   15. GIFT
-   ========================================================= */
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .gallery {
+
+        padding:
+            80px 15px
+            90px;
+    }
+
+
+    .gallery .section-heading {
+
+        margin-bottom: 30px;
+    }
+
+
+    .gallery .section-heading h2 {
+
+        font-size: 55px;
+    }
+
+
+    .gallery-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 10px;
+    }
+
+
+    .gallery-grid figure {
+
+        aspect-ratio: 3 / 4;
+
+        border-radius: 3px;
+    }
+
+
+    .gallery-bg-slide {
+
+        inset: -15%;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .gallery-grid {
+
+        gap: 8px;
+    }
+}
+
+
+/* =========================================================
+   REDUCE MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .gallery-bg-slide {
+
+        animation: none;
+    }
+
+
+    .gallery-bg-1 {
+
+        opacity: 1;
+
+        transform:
+            scale(1.08);
+    }
+
+
+    .gallery-grid img {
+
+        transition: none;
+    }
+}
+
+
+ /* =========================================================
+    GIFT SECTION
+    BACKGROUND 4 FOTO - SLIDE KE KIRI
+ ========================================================= */
 
 .gift {
-    background: #eee8e7;
+    position: relative;
+
+    overflow: hidden;
+
+    min-height: 100svh;
+
+    background: #111;
 }
+
+
+/* =========================================================
+   BACKGROUND CONTAINER
+========================================================= */
+
+.gift-background {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    z-index: 0;
+
+    background: #111;
+}
+
+
+/* =========================================================
+   SETIAP FOTO
+========================================================= */
+
+.gift-bg {
+    position: absolute;
+
+    top: -5%;
+    left: -8%;
+
+    width: 116%;
+    height: 110%;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    opacity: 0;
+
+    transform:
+        translate3d(8%, 0, 0)
+        scale(1.05);
+
+    will-change: transform, opacity;
+
+    animation:
+        giftPhotoMove 20s ease-in-out infinite,
+        giftPhotoFade 20s linear infinite;
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+
+/* =========================================================
+   FOTO 1
+========================================================= */
+
+.gift-bg-1 {
+    background-image:
+        url("../images/couple/29.avif");
+
+    animation-delay: 0s;
+}
+
+
+/* FOTO 2 */
+
+.gift-bg-2 {
+    background-image:
+        url("../images/couple/30.avif");
+
+    animation-delay: 5s;
+}
+
+
+/* FOTO 3 */
+
+.gift-bg-3 {
+    background-image:
+        url("../images/couple/31.avif");
+
+    animation-delay: 10s;
+}
+
+
+/* FOTO 4 */
+
+.gift-bg-4 {
+    background-image:
+        url("../images/couple/32.avif");
+
+    animation-delay: 15s;
+}
+
+
+/* =========================================================
+   GERAK KE KIRI
+========================================================= */
+
+@keyframes giftPhotoMove {
+
+    0% {
+        transform:
+            translate3d(8%, 0, 0)
+            scale(1.05);
+    }
+
+    100% {
+        transform:
+            translate3d(-8%, 0, 0)
+            scale(1.05);
+    }
+
+}
+
+
+/* =========================================================
+   FADE PERGANTIAN FOTO
+========================================================= */
+
+@keyframes giftPhotoFade {
+
+    0%,
+    8% {
+        opacity: 0;
+    }
+
+    15%,
+    42% {
+        opacity: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 0;
+    }
+
+}
+
+
+/* =========================================================
+   OVERLAY
+========================================================= */
+
+.gift-background-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,0.35) 0%,
+            rgba(0,0,0,0.45) 45%,
+            rgba(0,0,0,0.72) 100%
+        );
+}
+
+
+/* =========================================================
+   CONTENT DI ATAS BACKGROUND
+========================================================= */
+
+.gift > .card-content {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.gift .section-heading,
+.gift .body {
+    position: relative;
+
+    z-index: 3;
+}
+
+
+/* =========================================================
+   GIFT CARD - TRANSPARENT
+========================================================= */
 
 .gift-card,
 .gift-address {
-    margin-top: 12px;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
 
-    padding: 24px 22px;
+    margin: 18px auto;
+    padding: 24px;
 
-    border: 1px solid var(--line);
+    border-radius: 18px;
 
-    background: rgba(255, 255, 255, .18);
+    /* TRANSPARAN */
+    background: rgba(255, 255, 255, 0.02);
+
+    /* blur tipis supaya foto tetap terlihat */
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+    color: #fff;
+
+    overflow: hidden;
 }
 
-.gift-card {
-    display: flex;
 
-    align-items: center;
-    justify-content: space-between;
+/* garis cahaya atas */
 
-    gap: 18px;
+.gift-card::before,
+.gift-address::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 15%;
+
+    width: 70%;
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.7),
+        transparent
+    );
 }
+
+
+/* BANK */
 
 .gift-card span {
-    font-size: 9px;
+    display: block;
 
-    letter-spacing: .2em;
+    color: #fff;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 26px;
+
+    letter-spacing: 0.15em;
+
+    margin-bottom: 6px;
 }
+
+
+/* PEMILIK */
 
 .gift-card p {
-    margin: 7px 0;
+    margin: 0 0 8px;
 
-    color: var(--muted);
+    color: rgba(255,255,255,0.82);
 
-    font-size: 10px;
+    font-size: 13px;
 }
+
+
+/* NOMOR */
 
 .gift-card strong {
-    font-family: var(--serif);
-    font-size: 25px;
-    font-weight: 500;
+    display: block;
+
+    color: #fff;
+
+    font-size: 20px;
+
+    letter-spacing: 0.12em;
+
+    margin-bottom: 18px;
+
+    text-shadow:
+        0 2px 10px rgba(0,0,0,0.5);
 }
+
+
+/* BUTTON */
 
 .gift-card button,
 .gift-address button {
-    padding: 9px 12px;
+    padding: 9px 18px;
 
-    border: 1px solid #222;
+    border-radius: 30px;
 
-    background: transparent;
+    border: 1px solid rgba(255,255,255,0.5);
 
-    font-size: 8px;
+    background: rgba(255,255,255,0.12);
 
-    letter-spacing: .12em;
-}
-
-.gift-address h3 {
-    margin: 0;
-
-    font-family: var(--serif);
-    font-size: 28px;
-    font-weight: 500;
-}
-
-.gift-address p {
-    color: var(--muted);
+    color: #fff;
 
     font-size: 10px;
 
-    line-height: 1.8;
+    letter-spacing: 0.15em;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+
+.gift-card button:hover,
+.gift-address button:hover {
+    background: rgba(255,255,255,0.3);
+
+    border-color: #fff;
+}
+
+
+/* KIRIM HADIAH */
+
+.gift-address h3 {
+    color: #fff;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 28px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.08em;
+
+    margin: 0 0 12px;
+}
+
+
+.gift-address p {
+    color: rgba(255,255,255,0.82);
+
+    line-height: 1.7;
+
+    margin-bottom: 18px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .gift-card,
+.gift-address {
+    background: rgba(255, 255, 255, 0.02);
+
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .gift {
+        min-height: 100svh;
+    }
+
+    .gift-bg {
+        top: -6%;
+        left: -15%;
+
+        width: 130%;
+        height: 112%;
+    }
+
 }
 
 

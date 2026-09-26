@@ -17,26 +17,26 @@ const CONFIG = {
 
     slides: {
         cover: [
-            'assets/images/25.webp',
-            'assets/images/24.webp',
-            'assets/images/21.webp',
-            'assets/images/20.webp',
-            'assets/images/30.webp'
+            'assets/images/couple/25.avif',
+            'assets/images/couple/24.avif',
+            'assets/images/couple/21.avif',
+            'assets/images/couple/20.avif',
+            'assets/images/couple/30.avif'
         ],
 
         groom: [
-            'assets/images/01.webp',
-            'assets/images/02.webp',
-            'assets/images/03.webp',
-            'assets/images/06.webp',
-            'assets/images/09.webp'
+            'assets/images/pria/01.avif',
+            'assets/images/pria/02.avif',
+            'assets/images/pria/03.avif',
+            'assets/images/pria/06.avif',
+            'assets/images/pria/09.avif'
         ],
 
         bride: [
-            'assets/images/10.webp',
-            'assets/images/11.webp',
-            'assets/images/12.webp',
-            'assets/images/13.webp'
+            'assets/images/wanita/10.avif',
+            'assets/images/wanita/11.avif',
+            'assets/images/wanita/12.avif',
+            'assets/images/wanita/13.avif'
         ],
 
         event: [
@@ -287,38 +287,35 @@ function slides() {
             CONFIG.slides.bride,
             4000
         );
+        
 
     });
 
 
-    /*
-       EVENT
-    */
-    $$('[data-slideshow="event"]').forEach(element => {
+   
+document.addEventListener("DOMContentLoaded", function () {
 
-        makeSlides(
-            element,
-            CONFIG.slides.event,
-            'event-bg-slide',
-            5200
-        );
+    const eventPhoto = document.querySelector(".event-photo");
 
-    });
+    if (!eventPhoto) return;
 
+    const eventObserver = new IntersectionObserver(
+        function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    eventPhoto.classList.add("event-photo-visible");
+                    eventObserver.unobserve(eventPhoto);
+                }
+            });
+        },
+        {
+            threshold: 0.2
+        }
+    );
 
-    /*
-       EVENT 2
-    */
-    $$('[data-slideshow="event2"]').forEach(element => {
+    eventObserver.observe(eventPhoto);
 
-        makeSlides(
-            element,
-            CONFIG.slides.event2,
-            'event-bg-slide',
-            5200
-        );
-
-    });
+});
 }
 
 
