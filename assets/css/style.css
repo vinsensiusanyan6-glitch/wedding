@@ -2040,1095 +2040,875 @@ footer {
 }
 
 /* =========================================================
-   WEDDING EVENT
-   ULTRA CLEAR GLASS + GOLD LUXURY
+WEDDING EVENT
+LUXURY GOLD GLASS — DESKTOP + MOBILE
 ========================================================= */
 
 .wedding-event {
-    position: relative;
+position: relative;
+isolation: isolate;
+width: 100%;
+min-height: 100svh;
+padding: 100px 20px;
+box-sizing: border-box;
 
-    width: 100%;
-    min-height: 100svh;
+display: flex;
+align-items: center;
+justify-content: center;
 
-    padding: 100px 20px;
+overflow: hidden;
 
-    box-sizing: border-box;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    overflow: hidden;
 }
 
-
 /* =========================================================
-   EVENT BACKGROUND
+EVENT BACKGROUND
 ========================================================= */
 
 .event-background {
-    position: absolute;
-
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    overflow: hidden;
-
-    z-index: 0;
+position: absolute;
+inset: 0;
+width: 100%;
+height: 100%;
+overflow: hidden;
+z-index: 0;
+pointer-events: none;
 }
 
-
 /* =========================================================
-   BACKGROUND SLIDES
+BACKGROUND SLIDES
 ========================================================= */
 
 .event-bg-slide {
-    position: absolute;
+position: absolute;
+inset: -6%;
 
-    inset: -6%;
+background-size: cover;
+background-position: center center;
+background-repeat: no-repeat;
 
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
+opacity: 0;
 
-    opacity: 0;
+transform: scale(1.08) translate3d(0, 0, 0);
 
-    transform:
-        scale(1.08)
-        translate3d(0, 0, 0);
+animation:
+    eventPhotoFade 32s infinite,
+    eventPhotoMove 32s ease-in-out infinite;
 
-    animation:
-        eventPhotoFade 32s infinite,
-        eventPhotoMove 32s ease-in-out infinite;
+will-change: opacity, transform;
 
-    will-change:
-        opacity,
-        transform;
+backface-visibility: hidden;
+-webkit-backface-visibility: hidden;
 
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
 }
 
-
 /* =========================================================
-   EVENT PHOTOS
+EVENT PHOTOS
 ========================================================= */
 
 .event-bg-1 {
-    background-image:
-        url("../images/couple/29.avif");
-
-    animation-delay: 0s;
+background-image: url("../images/couple/29.avif");
+animation-delay: 0s;
 }
 
 .event-bg-2 {
-    background-image:
-        url("../images/couple/30.avif");
-
-    animation-delay: 8s;
+background-image: url("../images/couple/30.avif");
+animation-delay: 8s;
 }
 
 .event-bg-3 {
-    background-image:
-        url("../images/couple/31.avif");
-
-    animation-delay: 16s;
+background-image: url("../images/couple/31.avif");
+animation-delay: 16s;
 }
 
 .event-bg-4 {
-    background-image:
-        url("../images/couple/32.avif");
-
-    animation-delay: 24s;
+background-image: url("../images/couple/32.avif");
+animation-delay: 24s;
 }
 
-
 /* =========================================================
-   PHOTO CROSSFADE
+PHOTO CROSSFADE
 ========================================================= */
 
 @keyframes eventPhotoFade {
-
-    0% {
-        opacity: 0;
-    }
-
-    8% {
-        opacity: 1;
-    }
-
-    25% {
-        opacity: 1;
-    }
-
-    33% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 0;
-    }
+0% {
+opacity: 0;
 }
 
+8% {
+    opacity: 1;
+}
+
+25% {
+    opacity: 1;
+}
+
+33% {
+    opacity: 0;
+}
+
+100% {
+    opacity: 0;
+}
+
+}
 
 /* =========================================================
-   SLOW PHOTO MOVEMENT
+SLOW PHOTO MOVEMENT
 ========================================================= */
 
 @keyframes eventPhotoMove {
-
-    0% {
-        transform:
-            scale(1.08)
-            translate3d(-1%, 0%, 0);
-    }
-
-    50% {
-        transform:
-            scale(1.12)
-            translate3d(1%, -0.5%, 0);
-    }
-
-    100% {
-        transform:
-            scale(1.09)
-            translate3d(-1%, 0.5%, 0);
-    }
+0% {
+transform: scale(1.08) translate3d(-1%, 0, 0);
 }
 
+50% {
+    transform: scale(1.12) translate3d(1%, -.5%, 0);
+}
+
+100% {
+    transform: scale(1.09) translate3d(-1%, .5%, 0);
+}
+
+}
 
 /* =========================================================
-   BACKGROUND OVERLAY
-   LEBIH TRANSPARAN AGAR FOTO TERLIHAT
+BACKGROUND OVERLAY
 ========================================================= */
 
 .event-background-overlay {
-    position: absolute;
+position: absolute;
+inset: 0;
+z-index: 1;
+pointer-events: none;
 
-    inset: 0;
+background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, .30) 0%,
+    rgba(0, 0, 0, .16) 45%,
+    rgba(0, 0, 0, .42) 100%
+);
 
-    z-index: 1;
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0.30) 0%,
-            rgba(0, 0, 0, 0.16) 45%,
-            rgba(0, 0, 0, 0.42) 100%
-        );
 }
 
-
 /* =========================================================
-   CONTENT
+CONTENT
 ========================================================= */
 
 .event-container {
-    position: relative;
+position: relative;
+z-index: 2;
 
-    z-index: 2;
+width: 100%;
+max-width: 1150px;
+margin: auto;
 
-    width: 100%;
-    max-width: 1150px;
+text-align: center;
 
-    margin: auto;
-
-    text-align: center;
 }
 
-
 /* =========================================================
-   EVENT HEADING
+EVENT HEADING
 ========================================================= */
 
 .event-heading {
-    max-width: 700px;
-
-    margin:
-        0 auto 55px;
+max-width: 700px;
+margin: 0 auto 55px;
 }
 
 .event-heading span {
-    display: block;
+display: block;
+margin-bottom: 12px;
 
-    margin-bottom: 12px;
+font-family: "Montserrat", sans-serif;
+font-size: 12px;
+font-weight: 500;
+letter-spacing: 5px;
 
-    font-family:
-        "Montserrat",
-        sans-serif;
+color: rgba(229, 197, 141, .95);
 
-    font-size: 12px;
+text-shadow: 0 0 12px rgba(229, 197, 141, .20);
 
-    letter-spacing: 5px;
-
-    color:
-        rgba(229, 197, 141, 0.95);
-
-    text-shadow:
-        0 0 12px
-        rgba(229, 197, 141, 0.20);
 }
 
 .event-heading h2 {
-    margin: 0;
+margin: 0;
 
-    font-family:
-        "Cormorant Garamond",
-        serif;
+font-family: "Cormorant Garamond", serif;
+font-size: clamp(48px, 7vw, 82px);
+font-weight: 400;
+line-height: .95;
 
-    font-size:
-        clamp(48px, 7vw, 82px);
+color: #fff;
 
-    font-weight: 400;
+text-shadow: 0 4px 25px rgba(0, 0, 0, .45);
 
-    line-height: 0.9;
-
-    color: #fff;
-
-    text-shadow:
-        0 4px 25px
-        rgba(0, 0, 0, 0.45);
 }
 
-
-/* =========================================================
-   GOLD HEADING LINE
-========================================================= */
-
 .event-heading h2::after {
-    content: "";
+content: "";
+display: block;
 
-    display: block;
+width: 75px;
+height: 1px;
+margin: 22px auto 0;
 
-    width: 75px;
-    height: 1px;
+background: linear-gradient(
+    90deg,
+    transparent,
+    #e5c58d,
+    transparent
+);
 
-    margin:
-        22px auto 0;
+box-shadow: 0 0 12px rgba(229, 197, 141, .45);
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #e5c58d,
-            transparent
-        );
-
-    box-shadow:
-        0 0 12px
-        rgba(229, 197, 141, 0.55);
 }
 
 .event-heading p {
-    max-width: 600px;
+max-width: 600px;
+margin: 25px auto 0;
 
-    margin:
-        25px auto 0;
+font-family: "Montserrat", sans-serif;
+font-size: 13px;
+line-height: 1.9;
 
-    font-family:
-        "Montserrat",
-        sans-serif;
+color: rgba(255, 255, 255, .90);
 
-    font-size: 13px;
+text-shadow: 0 2px 10px rgba(0, 0, 0, .35);
 
-    line-height: 1.9;
-
-    color:
-        rgba(255, 255, 255, 0.90);
-
-    text-shadow:
-        0 2px 10px
-        rgba(0, 0, 0, 0.35);
 }
 
-
 /* =========================================================
-   EVENT CARDS
+EVENT CARDS LAYOUT
 ========================================================= */
 
 .event-cards {
-    display: grid;
+display: grid;
+grid-template-columns: repeat(2, minmax(0, 1fr));
 
-    grid-template-columns:
-        repeat(2, minmax(0, 1fr));
+gap: 28px;
 
-    gap: 28px;
+width: 100%;
+max-width: 900px;
+margin: auto;
 
-    width: 100%;
-    max-width: 900px;
+align-items: stretch;
 
-    margin: auto;
 }
 
-
 /* =========================================================
-   EVENT CARD
-   ULTRA CLEAR GLASS
+EVENT CARD — DESKTOP GLASS
 ========================================================= */
 
 .event-card {
-    position: relative;
+position: relative;
+isolation: isolate;
 
-    width: 100%;
+width: 100%;
+min-width: 0;
+box-sizing: border-box;
 
-    box-sizing: border-box;
+padding: 42px 35px 38px;
 
-    padding:
-        42px 35px 38px;
+border: 1px solid rgba(229, 197, 141, .58);
+border-radius: 24px;
 
-    border-radius: 24px;
+background: rgba(8, 22, 42, .18);
 
-    /*
-       SUPER TRANSPARENT
-       Background foto akan terlihat jelas
-    */
-    background:
-        rgba(255, 255, 255, 0.015) !important;
+backdrop-filter: blur(2px);
+-webkit-backdrop-filter: blur(2px);
 
-    /*
-       HAMPIR TIDAK ADA BLUR
-    */
-    backdrop-filter:
-        blur(1px);
+box-shadow:
+    0 16px 40px rgba(0, 0, 0, .14),
+    inset 0 1px 0 rgba(255, 255, 255, .10);
 
-    -webkit-backdrop-filter:
-        blur(1px);
+color: #fff;
+text-align: center;
 
-    /*
-       GOLD BORDER
-    */
-    border:
-        1px solid
-        rgba(229, 197, 141, 0.58);
+overflow: hidden;
 
-    /*
-       SHADOW TIPIS
-    */
-    box-shadow:
-        0 16px 40px
-        rgba(0, 0, 0, 0.12),
+transition:
+    transform .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease,
+    background .35s ease;
 
-        inset 0 1px 0
-        rgba(255, 255, 255, 0.10);
-
-    color: #fff;
-
-    overflow: hidden;
-
-    transition:
-        transform 0.4s ease,
-        border-color 0.4s ease,
-        box-shadow 0.4s ease,
-        background 0.4s ease;
 }
 
-
 /* =========================================================
-   INNER GOLD FRAME
+INNER GOLD FRAME
 ========================================================= */
 
 .event-card::before {
-    content: "";
+content: "";
+position: absolute;
+inset: 9px;
 
-    position: absolute;
+border: 1px solid rgba(229, 197, 141, .22);
+border-radius: 18px;
 
-    inset: 9px;
+pointer-events: none;
+z-index: -1;
 
-    border:
-        1px solid
-        rgba(229, 197, 141, 0.20);
-
-    border-radius: 18px;
-
-    pointer-events: none;
 }
 
-
 /* =========================================================
-   GOLD TOP LINE
+GOLD TOP LINE
 ========================================================= */
 
 .event-card::after {
-    content: "";
+content: "";
+position: absolute;
 
-    position: absolute;
+top: 0;
+left: 18%;
 
-    top: 0;
+width: 64%;
+height: 1px;
 
-    left: 18%;
+background: linear-gradient(
+    90deg,
+    transparent,
+    #e5c58d,
+    #fff0ce,
+    #e5c58d,
+    transparent
+);
 
-    width: 64%;
+box-shadow: 0 0 10px rgba(229, 197, 141, .45);
 
-    height: 1px;
+pointer-events: none;
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #e5c58d,
-            transparent
-        );
-
-    box-shadow:
-        0 0 12px
-        rgba(229, 197, 141, 0.65);
-
-    opacity: 0.95;
-
-    pointer-events: none;
 }
 
-
 /* =========================================================
-   GOLD CORNER
+GOLD CORNER
 ========================================================= */
 
 .event-card .event-gold-corner {
-    position: absolute;
+position: absolute;
 
-    top: 16px;
-    right: 16px;
+top: 16px;
+right: 16px;
 
-    width: 35px;
-    height: 35px;
+width: 35px;
+height: 35px;
 
-    border-top:
-        1px solid
-        rgba(229, 197, 141, 0.75);
+border-top: 1px solid rgba(229, 197, 141, .75);
+border-right: 1px solid rgba(229, 197, 141, .75);
 
-    border-right:
-        1px solid
-        rgba(229, 197, 141, 0.75);
+border-radius: 0 12px 0 0;
 
-    border-radius:
-        0 12px 0 0;
+opacity: .80;
+pointer-events: none;
 
-    opacity: 0.80;
-
-    pointer-events: none;
 }
 
-
 /* =========================================================
-   EVENT LABEL
+EVENT LABEL
 ========================================================= */
 
 .event-card-label {
-    position: relative;
+position: relative;
+z-index: 2;
 
-    z-index: 2;
+display: block;
+margin: 0 0 12px;
 
-    display: block;
+font-family: "Montserrat", sans-serif;
+font-size: 9px;
+font-weight: 500;
+letter-spacing: 3px;
+line-height: 1.7;
+text-transform: uppercase;
 
-    margin:
-        0 0 12px;
+color: #e5c58d;
 
-    font-family:
-        "Montserrat",
-        sans-serif;
+text-shadow: 0 0 12px rgba(229, 197, 141, .25);
 
-    font-size: 9px;
-
-    font-weight: 500;
-
-    letter-spacing: 3px;
-
-    text-transform: uppercase;
-
-    color:
-        #e5c58d;
-
-    text-shadow:
-        0 0 12px
-        rgba(229, 197, 141, 0.30);
 }
 
-
 /* =========================================================
-   EVENT TITLE
+EVENT TITLE
 ========================================================= */
 
 .event-card h3 {
-    position: relative;
+position: relative;
+z-index: 2;
 
-    z-index: 2;
+margin: 0 0 18px;
 
-    margin:
-        0 0 18px;
+font-family: "Cormorant Garamond", serif;
+font-size: clamp(38px, 4vw, 52px);
+font-weight: 400;
+line-height: 1.05;
 
-    font-family:
-        "Cormorant Garamond",
-        serif;
+color: #fff;
 
-    font-size:
-        clamp(38px, 4vw, 52px);
+text-shadow: 0 3px 15px rgba(0, 0, 0, .55);
 
-    font-weight: 400;
-
-    line-height: 1;
-
-    color: #fff;
-
-    text-shadow:
-        0 3px 15px
-        rgba(0, 0, 0, 0.55);
 }
-
-
-/* =========================================================
-   GOLD TITLE LINE
-========================================================= */
 
 .event-card h3::after {
-    content: "";
+content: "";
+display: block;
 
-    display: block;
+width: 45px;
+height: 1px;
+margin: 15px auto 0;
 
-    width: 45px;
+background: linear-gradient(
+    90deg,
+    transparent,
+    #e5c58d,
+    transparent
+);
 
-    height: 1px;
+opacity: .85;
 
-    margin:
-        15px auto 0;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #e5c58d,
-            transparent
-        );
-
-    opacity: 0.85;
 }
 
-
 /* =========================================================
-   EVENT TEXT
+EVENT TEXT
 ========================================================= */
 
 .event-card p {
-    position: relative;
+position: relative;
+z-index: 2;
 
-    z-index: 2;
+margin: 9px 0;
 
-    margin:
-        9px 0;
+font-family: "Montserrat", sans-serif;
+font-size: 11px;
+font-weight: 400;
+line-height: 1.9;
+letter-spacing: .2px;
 
-    font-family:
-        "Montserrat",
-        sans-serif;
+color: rgba(255, 255, 255, .94);
 
-    font-size: 11px;
+text-shadow: 0 1px 8px rgba(0, 0, 0, .55);
 
-    line-height: 1.9;
-
-    letter-spacing: 0.2px;
-
-    color:
-        rgba(255, 255, 255, 0.94);
-
-    text-shadow:
-        0 1px 8px
-        rgba(0, 0, 0, 0.55);
 }
-
-
-/* =========================================================
-   GOLD IMPORTANT TEXT
-========================================================= */
 
 .event-card strong {
-    color:
-        #e5c58d;
+color: #e5c58d;
+font-weight: 500;
 
-    font-weight: 500;
+text-shadow: 0 0 10px rgba(229, 197, 141, .15);
 
-    text-shadow:
-        0 0 10px
-        rgba(229, 197, 141, 0.15);
 }
 
-
 /* =========================================================
-   EVENT BUTTON
+EVENT BUTTON
 ========================================================= */
 
 .event-card a,
 .event-card button {
-    position: relative;
+position: relative;
+z-index: 3;
 
-    z-index: 3;
+display: inline-flex;
+align-items: center;
+justify-content: center;
 
-    display: inline-flex;
+min-height: 42px;
+max-width: 100%;
 
-    align-items: center;
-    justify-content: center;
+padding: 0 24px;
+margin: 20px auto 0;
 
-    min-height: 42px;
+box-sizing: border-box;
 
-    padding:
-        0 24px;
+border: 1px solid rgba(229, 197, 141, .58);
+border-radius: 50px;
 
-    margin-top: 20px;
+background: rgba(229, 197, 141, .04);
 
-    box-sizing: border-box;
+color: #f5dfb0;
 
-    border-radius: 50px;
+font-family: "Montserrat", sans-serif;
+font-size: 9px;
+font-weight: 500;
+letter-spacing: 1.7px;
 
-    background:
-        rgba(229, 197, 141, 0.025);
+text-align: center;
+text-decoration: none;
 
-    border:
-        1px solid
-        rgba(229, 197, 141, 0.58);
+backdrop-filter: none;
+-webkit-backdrop-filter: none;
 
-    color:
-        #f5dfb0;
+transition:
+    background .3s ease,
+    border-color .3s ease,
+    box-shadow .3s ease,
+    transform .3s ease;
 
-    font-family:
-        "Montserrat",
-        sans-serif;
-
-    font-size: 9px;
-
-    font-weight: 500;
-
-    letter-spacing: 1.7px;
-
-    text-decoration: none;
-
-    backdrop-filter:
-        blur(1px);
-
-    -webkit-backdrop-filter:
-        blur(1px);
-
-    transition:
-        background 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease,
-        transform 0.3s ease;
 }
 
-
 /* =========================================================
-   BUTTON HOVER
+DESKTOP HOVER
 ========================================================= */
+
+@media (hover: hover) and (min-width: 601px) {
+
+.event-card:hover {
+    transform: translateY(-6px);
+
+    background: rgba(8, 22, 42, .24);
+
+    border-color: rgba(229, 197, 141, .78);
+
+    box-shadow:
+        0 22px 50px rgba(0, 0, 0, .18),
+        0 0 25px rgba(229, 197, 141, .08),
+        inset 0 1px 0 rgba(255, 255, 255, .12);
+}
 
 .event-card a:hover,
 .event-card button:hover {
-    background:
-        rgba(229, 197, 141, 0.09);
+    background: rgba(229, 197, 141, .12);
 
-    border-color:
-        #e5c58d;
-
+    border-color: #e5c58d;
     color: #fff;
 
-    box-shadow:
-        0 0 20px
-        rgba(229, 197, 141, 0.16);
+    box-shadow: 0 0 20px rgba(229, 197, 141, .16);
 
-    transform:
-        translateY(-2px);
+    transform: translateY(-2px);
 }
 
-
-/* =========================================================
-   DESKTOP HOVER
-========================================================= */
-
-@media (min-width: 601px) {
-
-    .event-card:hover {
-        transform:
-            translateY(-6px);
-
-        background:
-            rgba(255, 255, 255, 0.022) !important;
-
-        border-color:
-            rgba(229, 197, 141, 0.76);
-
-        box-shadow:
-            0 22px 50px
-            rgba(0, 0, 0, 0.18),
-
-            0 0 25px
-            rgba(229, 197, 141, 0.08),
-
-            inset 0 1px 0
-            rgba(255, 255, 255, 0.12);
-    }
 }
 
-
 /* =========================================================
-   MOBILE
+MOBILE — REFINED LUXURY LAYOUT
 ========================================================= */
 
 @media (max-width: 600px) {
 
-    .wedding-event {
-        min-height: 100svh;
-
-        padding:
-            80px 16px 70px;
-    }
-
-
-    /* ==============================================
-       MOBILE BACKGROUND
-    ============================================== */
-
-    .event-bg-slide {
-        inset:
-            -8% -20%;
-
-        background-size:
-            cover;
-
-        background-position:
-            center center;
-    }
-
-
-    /* ==============================================
-       MOBILE OVERLAY
-       FOTO SANGAT TERLIHAT
-    ============================================== */
-
-    .event-background-overlay {
-        background:
-            linear-gradient(
-                180deg,
-                rgba(0, 0, 0, 0.20) 0%,
-                rgba(0, 0, 0, 0.08) 35%,
-                rgba(0, 0, 0, 0.22) 65%,
-                rgba(0, 0, 0, 0.38) 100%
-            );
-    }
-
-
-    /* ==============================================
-       CONTAINER
-    ============================================== */
-
-    .event-container {
-        width: 100%;
-
-        max-width: 430px;
-
-        margin: auto;
-    }
-
-
-    /* ==============================================
-       HEADING
-    ============================================== */
-
-    .event-heading {
-        width: 100%;
-
-        margin:
-            0 auto 35px;
-
-        padding:
-            0 5px;
-    }
-
-    .event-heading span {
-        font-size: 9px;
-
-        letter-spacing: 4px;
-
-        margin-bottom: 13px;
-    }
-
-    .event-heading h2 {
-        font-size:
-            clamp(56px, 15vw, 72px);
-
-        line-height: 0.95;
-    }
-
-    .event-heading h2::after {
-        width: 55px;
-
-        margin-top: 17px;
-    }
-
-    .event-heading p {
-        max-width: 310px;
-
-        margin:
-            20px auto 0;
-
-        font-size: 10.5px;
-
-        line-height: 1.85;
-    }
-
-
-    /* ==============================================
-       MOBILE CARDS
-    ============================================== */
-
-    .event-cards {
-        display: grid;
-
-        grid-template-columns:
-            1fr;
-
-        gap: 16px;
-
-        width: 100%;
-
-        max-width: 100%;
-
-        margin: auto;
-    }
-
-
-    /* ==============================================
-       MOBILE GLASS CARD
-    ============================================== */
-
-    .event-card {
-        width: 100%;
-
-        padding:
-            34px 20px 30px;
-
-        border-radius: 20px;
-
-        /* HAMPIR BENING */
-        background:
-            rgba(255, 255, 255, 0.010) !important;
-
-        /* FOTO TETAP JELAS */
-        backdrop-filter:
-            blur(0.8px);
-
-        -webkit-backdrop-filter:
-            blur(0.8px);
-
-        border:
-            1px solid
-            rgba(229, 197, 141, 0.56);
-
-        box-shadow:
-            0 12px 30px
-            rgba(0, 0, 0, 0.10),
-
-            inset 0 1px 0
-            rgba(255, 255, 255, 0.09);
-    }
-
-
-    /* ==============================================
-       MOBILE GOLD FRAME
-    ============================================== */
-
-    .event-card::before {
-        inset:
-            7px;
-
-        border-radius:
-            15px;
-
-        border-color:
-            rgba(229, 197, 141, 0.18);
-    }
-
-
-    /* ==============================================
-       MOBILE GOLD TOP
-    ============================================== */
-
-    .event-card::after {
-        left:
-            20%;
-
-        width:
-            60%;
-    }
-
-
-    /* ==============================================
-       MOBILE LABEL
-    ============================================== */
-
-    .event-card-label {
-        font-size:
-            8px;
-
-        letter-spacing:
-            2.8px;
-
-        margin-bottom:
-            11px;
-    }
-
-
-    /* ==============================================
-       MOBILE TITLE
-    ============================================== */
-
-    .event-card h3 {
-        font-size:
-            clamp(36px, 10vw, 44px);
-
-        line-height:
-            1.02;
-
-        margin-bottom:
-            17px;
-    }
-
-    .event-card h3::after {
-        width:
-            40px;
-
-        margin-top:
-            13px;
-    }
-
-
-    /* ==============================================
-       MOBILE TEXT
-    ============================================== */
-
-    .event-card p {
-        font-size:
-            10.5px;
-
-        line-height:
-            1.85;
-
-        margin:
-            7px 0;
-    }
-
-
-    /* ==============================================
-       MOBILE BUTTON
-    ============================================== */
-
-    .event-card a,
-    .event-card button {
-        min-height:
-            41px;
-
-        padding:
-            0 21px;
-
-        margin-top:
-            17px;
-
-        font-size:
-            8px;
-
-        letter-spacing:
-            1.5px;
-    }
-
-
-    /* ==============================================
-       DISABLE CARD JUMP ON MOBILE
-    ============================================== */
-
-    .event-card:hover {
-        transform:
-            none;
-
-        background:
-            rgba(255, 255, 255, 0.010) !important;
-
-        border-color:
-            rgba(229, 197, 141, 0.56);
-
-        box-shadow:
-            0 12px 30px
-            rgba(0, 0, 0, 0.10),
-
-            inset 0 1px 0
-            rgba(255, 255, 255, 0.09);
-    }
-
-    .event-card a:hover,
-    .event-card button:hover {
-        transform:
-            none;
-
-        background:
-            rgba(229, 197, 141, 0.08);
-
-        border-color:
-            rgba(229, 197, 141, 0.70);
-    }
+.wedding-event {
+    min-height: 100svh;
+    padding: 75px 18px 65px;
+    align-items: center;
 }
 
+/* Background */
+
+.event-bg-slide {
+    inset: -4%;
+    background-size: cover;
+    background-position: center center;
+}
+
+.event-background-overlay {
+    background: linear-gradient(
+        180deg,
+        rgba(4, 10, 20, .28) 0%,
+        rgba(4, 10, 20, .16) 45%,
+        rgba(4, 10, 20, .38) 100%
+    );
+}
+
+/* Container */
+
+.event-container {
+    width: 100%;
+    max-width: 440px;
+    margin: auto;
+}
+
+/* Heading */
+
+.event-heading {
+    width: 100%;
+    max-width: 360px;
+
+    margin: 0 auto 32px;
+    padding: 0;
+
+    text-align: center;
+}
+
+.event-heading span {
+    font-size: 9px;
+    letter-spacing: 4px;
+    margin-bottom: 12px;
+}
+
+.event-heading h2 {
+    font-size: clamp(52px, 14vw, 68px);
+    line-height: .95;
+    letter-spacing: -1px;
+}
+
+.event-heading h2::after {
+    width: 55px;
+    margin-top: 16px;
+}
+
+.event-heading p {
+    max-width: 300px;
+    margin: 18px auto 0;
+    padding: 0 8px;
+
+    font-size: 10.5px;
+    line-height: 1.8;
+}
+
+/* Cards layout */
+
+.event-cards {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+
+    gap: 18px;
+
+    width: 100%;
+    max-width: 390px;
+    margin: 0 auto;
+
+    align-items: stretch;
+}
+
+/* Card */
+
+.event-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 100%;
+    min-width: 0;
+
+    padding: 32px 22px 29px;
+
+    border-radius: 22px;
+    border: 1px solid rgba(229, 197, 141, .68);
+
+    background: rgba(7, 18, 34, .28) !important;
+
+    /* Disable blur on mobile for smoother rendering */
+
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+
+    box-shadow:
+        0 10px 28px rgba(0, 0, 0, .16),
+        inset 0 1px 0 rgba(255, 255, 255, .12);
+
+    text-align: center;
+
+    transform: none;
+    transition: border-color .3s ease;
+}
+
+/* Inner frame */
+
+.event-card::before {
+    inset: 8px;
+
+    border: 1px solid rgba(229, 197, 141, .25);
+    border-radius: 15px;
+}
+
+/* Gold top */
+
+.event-card::after {
+    left: 22%;
+    width: 56%;
+}
+
+/* Corner */
+
+.event-card .event-gold-corner {
+    top: 15px;
+    right: 15px;
+
+    width: 25px;
+    height: 25px;
+
+    border-radius: 0 9px 0 0;
+    opacity: .75;
+}
+
+/* Label */
+
+.event-card-label {
+    margin: 0 0 12px;
+
+    font-size: 8px;
+    letter-spacing: 2.6px;
+    line-height: 1.7;
+
+    text-align: center;
+}
+
+/* Title */
+
+.event-card h3 {
+    width: 100%;
+
+    margin: 0 0 18px;
+
+    font-size: clamp(36px, 10vw, 43px);
+    line-height: 1.05;
+    letter-spacing: .2px;
+
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.event-card h3::after {
+    width: 42px;
+    margin: 13px auto 0;
+}
+
+/* Details */
+
+.event-card p {
+    width: 100%;
+    max-width: 290px;
+
+    margin: 6px auto;
+
+    font-size: 10.5px;
+    line-height: 1.85;
+    letter-spacing: .1px;
+
+    text-align: center;
+    overflow-wrap: break-word;
+}
+
+/* Button */
+
+.event-card a,
+.event-card button {
+    width: auto;
+    max-width: 100%;
+
+    min-height: 42px;
+
+    margin: 19px auto 0;
+    padding: 0 22px;
+
+    font-size: 8px;
+    letter-spacing: 1.3px;
+    line-height: 1.5;
+
+    white-space: normal;
+    overflow-wrap: anywhere;
+
+    background: rgba(229, 197, 141, .07);
+
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .10);
+}
+
+/* Prevent hover movement on touchscreen */
+
+.event-card:hover {
+    transform: none;
+
+    background: rgba(7, 18, 34, .28) !important;
+
+    border-color: rgba(229, 197, 141, .68);
+
+    box-shadow:
+        0 10px 28px rgba(0, 0, 0, .16),
+        inset 0 1px 0 rgba(255, 255, 255, .12);
+}
+
+.event-card a:hover,
+.event-card button:hover {
+    transform: none;
+
+    background: rgba(229, 197, 141, .10);
+    border-color: #e5c58d;
+
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .10);
+}
+
+}
 
 /* =========================================================
-   SMALL PHONE
+EXTRA SMALL PHONE — MAX 380PX
 ========================================================= */
 
 @media (max-width: 380px) {
 
-    .wedding-event {
-        padding:
-            65px 13px;
-    }
-
-    .event-card {
-        padding:
-            31px 17px 28px;
-
-        border-radius:
-            18px;
-    }
-
-    .event-card h3 {
-        font-size:
-            35px;
-    }
-
-    .event-card p {
-        font-size:
-            10px;
-    }
+.wedding-event {
+    padding: 65px 14px 55px;
 }
 
+.event-heading {
+    margin-bottom: 27px;
+}
+
+.event-heading h2 {
+    font-size: 52px;
+}
+
+.event-heading p {
+    max-width: 280px;
+    font-size: 10px;
+}
+
+.event-cards {
+    gap: 15px;
+}
+
+.event-card {
+    padding: 29px 17px 26px;
+    border-radius: 19px;
+}
+
+.event-card::before {
+    inset: 7px;
+    border-radius: 13px;
+}
+
+.event-card h3 {
+    font-size: 35px;
+}
+
+.event-card p {
+    font-size: 10px;
+    line-height: 1.8;
+}
+
+.event-card a,
+.event-card button {
+    min-height: 40px;
+
+    padding: 0 17px;
+
+    font-size: 7.5px;
+    letter-spacing: 1px;
+}
+
+}
 
 /* =========================================================
-   REDUCE MOTION
+REDUCE MOTION
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
-    .event-bg-slide {
-        animation:
-            none;
+.event-bg-slide {
+    animation: none;
+    opacity: 0;
+}
 
-        opacity:
-            0;
-    }
+.event-bg-1 {
+    opacity: 1;
+}
 
-    .event-bg-1 {
-        opacity:
-            1;
-    }
+.event-card,
+.event-card a,
+.event-card button {
+    transition: none !important;
+}
 
-    .event-card,
-    .event-card a,
-    .event-card button {
-        transition:
-            none;
-    }
 }
 /* =========================================================
    GALLERY - LUXURY DESKTOP & MOBILE
