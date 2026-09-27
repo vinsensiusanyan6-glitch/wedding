@@ -1128,28 +1128,29 @@ footer {
 
 
 /* =========================================================
-   FOTO 1
+   QUOTE BACKGROUND — SLIDE BERGANTIAN CEPAT
 ========================================================= */
 
-.quote-bg-1 {
-    background-image:
-        url("../images/couple/24.avif");
+.quote-bg-1,
+.quote-bg-2 {
+    animation-duration: 30s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
 
+
+/* FOTO 1 */
+.quote-bg-1 {
+    background-image: url("../images/couple/24.avif");
     animation-delay: 0s;
 }
 
 
-/* =========================================================
-   FOTO 2
-========================================================= */
-
+/* FOTO 2 */
 .quote-bg-2 {
-    background-image:
-        url("../images/couple/27.avif");
-
-    animation-delay: 8s;
+    background-image: url("../images/couple/27.avif");
+    animation-delay: 6s;
 }
-
 
 
 /* =========================================================
@@ -2083,12 +2084,12 @@ EVENT PHOTOS
 ========================================================= */
 
 .event-bg-1 {
-background-image: url("../images/couple/30.avif");
-animation-delay: 0s;
+background-image: url("../images/couple/38.avif");
+animation-delay: 60s;
 }
 
 .event-bg-2 {
-background-image: url("../images/couple/31.avif");
+background-image: url("../images/couple/38.avif");
 animation-delay: 8s;
 }
 
@@ -3417,14 +3418,14 @@ REDUCE MOTION
 
 .gift-bg-1 {
     background-image:
-        url("../images/couple/32.avif");
+        url("../images/couple/36.avif");
 
     animation-delay: 0s;
 }
 
 .gift-bg-2 {
     background-image:
-        url("../images/couple/21.avif");
+        url("../images/couple/35.avif");
 
     animation-delay: 9s;
 }
