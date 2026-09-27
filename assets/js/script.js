@@ -1895,3 +1895,340 @@ window.addEventListener(
 
     }
 );
+
+/* =========================================================
+   MOBILE PERFORMANCE MODE
+   Tidak mengubah desktop
+========================================================= */
+
+(function () {
+
+    const isMobile =
+        window.matchMedia('(max-width: 768px)').matches;
+
+    if (!isMobile) return;
+
+
+    /* =====================================================
+       1. DETEKSI HP LEMAH
+    ===================================================== */
+
+    const cores =
+        navigator.hardwareConcurrency || 4;
+
+    const memory =
+        navigator.deviceMemory || 4;
+
+    const slowDevice =
+        cores <= 4 || memory <= 4;
+
+
+    document.documentElement.classList.add('mobile-device');
+
+    if (slowDevice) {
+        document.documentElement.classList.add('low-power-device');
+    }
+
+
+    /* =====================================================
+       2. JANGAN JALANKAN ANIMASI BERAT SAAT SCROLL
+    ===================================================== */
+
+    let scrollTimer;
+
+    window.addEventListener(
+        'scroll',
+        function () {
+
+            document.documentElement.classList.add(
+                'is-scrolling'
+            );
+
+            clearTimeout(scrollTimer);
+
+            scrollTimer = setTimeout(() => {
+
+                document.documentElement.classList.remove(
+                    'is-scrolling'
+                );
+
+            }, 180);
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    /* =====================================================
+       3. PAUSE ANIMASI SAAT SCROLL
+    ===================================================== */
+
+    const style = document.createElement('style');
+
+    style.textContent = `
+
+        @media (max-width: 768px) {
+
+            html.is-scrolling
+            .rsvp-floating-wish {
+
+                animation-play-state:
+                    paused !important;
+            }
+
+
+            html.is-scrolling
+            .closing-heart {
+
+                animation-play-state:
+                    paused !important;
+            }
+
+
+            html.is-scrolling
+            .closing-background-image {
+
+                animation-play-state:
+                    paused !important;
+            }
+
+
+            html.is-scrolling
+            .event-background-image {
+
+                animation-play-state:
+                    paused !important;
+            }
+
+
+            html.low-power-device
+            .rsvp-floating-wish {
+
+                animation-duration:
+                    45s !important;
+            }
+
+
+            html.low-power-device
+            .closing-background-image {
+
+                animation-duration:
+                    50s !important;
+            }
+
+
+            html.low-power-device
+            .event-background-image {
+
+                animation-duration:
+                    50s !important;
+            }
+
+        }
+
+    `;
+
+    document.head.appendChild(style);
+
+
+    /* =====================================================
+       4. BATASI RSVP WISH YANG TAMPIL
+    ===================================================== */
+
+    function limitWishes() {
+
+        const stage =
+            document.querySelector(
+                '.rsvp-wish-stage'
+            );
+
+        if (!stage) return;
+
+        const wishes =
+            stage.querySelectorAll(
+                '.rsvp-floating-wish'
+            );
+
+        const max =
+            slowDevice ? 5 : 7;
+
+        wishes.forEach((wish, index) => {
+
+            if (index >= max) {
+
+                wish.remove();
+
+            }
+
+        });
+
+    }
+
+
+    /* =====================================================
+       5. OBSERVER UNTUK RSVP
+    ===================================================== */
+
+    const wishObserver =
+        new MutationObserver(() => {
+
+            limitWishes();
+
+        });
+
+
+    const startWishObserver = () => {
+
+        const stage =
+            document.querySelector(
+                '.rsvp-wish-stage'
+            );
+
+        if (!stage) {
+
+            setTimeout(
+                startWishObserver,
+                1000
+            );
+
+            return;
+        }
+
+        wishObserver.observe(
+            stage,
+            {
+                childList: true
+            }
+        );
+
+        limitWishes();
+    };
+
+
+    startWishObserver();
+
+
+    /* =====================================================
+       6. PAUSE ANIMASI SECTION YANG JAUH
+    ===================================================== */
+
+    const sections =
+        document.querySelectorAll(
+            '.closing, .wedding-event, .rsvp'
+        );
+
+
+    if ('IntersectionObserver' in window) {
+
+        const sectionObserver =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        const section =
+                            entry.target;
+
+                        if (entry.isIntersecting) {
+
+                            section.classList.remove(
+                                'section-hidden'
+                            );
+
+                        } else {
+
+                            section.classList.add(
+                                'section-hidden'
+                            );
+
+                        }
+
+                    });
+
+                },
+                {
+                    rootMargin:
+                        '150px 0px'
+                }
+            );
+
+
+        sections.forEach(section => {
+
+            sectionObserver.observe(
+                section
+            );
+
+        });
+
+    }
+
+
+    /* =====================================================
+       7. LAZY LOAD IMAGE
+    ===================================================== */
+
+    const images =
+        document.querySelectorAll(
+            'img'
+        );
+
+
+    images.forEach(img => {
+
+        if (!img.hasAttribute('loading')) {
+
+            img.setAttribute(
+                'loading',
+                'lazy'
+            );
+
+        }
+
+        if (!img.hasAttribute('decoding')) {
+
+            img.setAttribute(
+                'decoding',
+                'async'
+            );
+
+        }
+
+    });
+
+
+    /* =====================================================
+       8. JANGAN LAZY LOAD FOTO PERTAMA
+    ===================================================== */
+
+    const firstImages =
+        document.querySelectorAll(
+            '.hero img, .cover img, .couple img'
+        );
+
+
+    firstImages.forEach(img => {
+
+        img.setAttribute(
+            'loading',
+            'eager'
+        );
+
+    });
+
+
+    /* =====================================================
+       9. LOW POWER DEVICE
+    ===================================================== */
+
+    if (slowDevice) {
+
+        document.documentElement.classList.add(
+            'very-light-mode'
+        );
+
+    }
+
+})();
