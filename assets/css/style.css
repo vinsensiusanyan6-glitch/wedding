@@ -5430,15 +5430,6 @@ footer {
     }
 }
 
-/* =========================================================
-   RSVP — FLOATING WISH BACKGROUND
-========================================================= */
-
-.rsvp {
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
-}
 
 /* Area khusus animasi ucapan */
 .rsvp-wish-stage {
@@ -6682,23 +6673,6 @@ footer {
 }
 
 
-/* =========================================================
-   20. FOOTER
-   ========================================================= */
-
-footer {
-    padding: 20px;
-
-    background: #d8ccca;
-
-    color: #777;
-
-    font-size: 8px;
-
-    letter-spacing: .15em;
-
-    text-align: center;
-}
 
 
 /* =========================================================
@@ -7359,5 +7333,459 @@ footer {
 @keyframes pulse {
     50% {
         transform: scale(1.08);
+    }
+}
+
+/* =========================================================
+   MOBILE PERFORMANCE + SMOOTH SCROLL
+   Tambahkan di PALING BAWAH style.css
+   Tidak mengubah tampilan desktop
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* =====================================================
+       GLOBAL MOBILE
+    ===================================================== */
+
+    html {
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-y: auto;
+    }
+
+    body {
+        overflow-x: hidden;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+
+    /* =====================================================
+       BACKGROUND FIXED
+       Hindari efek patah-patah saat scrolling HP
+    ===================================================== */
+
+    *,
+    *::before,
+    *::after {
+        background-attachment: scroll !important;
+    }
+
+
+    /* =====================================================
+       GPU COMPOSITING
+       Hanya elemen yang bergerak
+    ===================================================== */
+
+    .closing-background-image,
+    .event-background-image,
+    .rsvp-floating-wish,
+    .closing-heart,
+    .slide,
+    .hero-slide,
+    .couple-slide,
+    .groom-slide,
+    .bride-slide {
+
+        transform:
+            translate3d(0, 0, 0);
+
+        backface-visibility:
+            hidden;
+
+        -webkit-backface-visibility:
+            hidden;
+    }
+
+
+    /* =====================================================
+       CLOSING BACKGROUND
+    ===================================================== */
+
+    .closing-background-image {
+
+        animation-duration:
+            32s !important;
+
+        will-change:
+            transform;
+    }
+
+
+    /* =====================================================
+       EVENT BACKGROUND
+    ===================================================== */
+
+    .event-background-image {
+
+        animation-duration:
+            35s !important;
+
+        will-change:
+            transform;
+    }
+
+
+    /* =====================================================
+       GLASS EFFECT
+       Blur berat dimatikan di HP
+       Transparansi tetap ada
+    ===================================================== */
+
+    .closing-content,
+    .quote-card,
+    .event-card,
+    .rsvp-floating-wish,
+    .gift-card,
+    .live-card,
+    .gallery-card {
+
+        backdrop-filter:
+            none !important;
+
+        -webkit-backdrop-filter:
+            none !important;
+    }
+
+
+    /* =====================================================
+       CLOSING GLASS
+    ===================================================== */
+
+    .closing-content {
+
+        background:
+            rgba(8, 22, 42, .16) !important;
+
+        box-shadow:
+            0 15px 40px rgba(0,0,0,.16),
+            inset 0 0 20px rgba(255,255,255,.012) !important;
+    }
+
+
+    /* =====================================================
+       QUOTE GLASS
+    ===================================================== */
+
+    .quote-card {
+
+        background:
+            rgba(8, 22, 42, .16) !important;
+
+        box-shadow:
+            0 15px 40px rgba(0,0,0,.16),
+            inset 0 0 20px rgba(255,255,255,.012) !important;
+    }
+
+
+    /* =====================================================
+       EVENT GLASS
+    ===================================================== */
+
+    .event-card {
+
+        background:
+            rgba(8, 22, 42, .16) !important;
+
+        box-shadow:
+            0 15px 40px rgba(0,0,0,.16),
+            inset 0 0 20px rgba(255,255,255,.012) !important;
+    }
+
+
+    /* =====================================================
+       RSVP FLOATING WISH
+    ===================================================== */
+
+    .rsvp-floating-wish {
+
+        background:
+            rgba(8, 22, 42, .52) !important;
+
+        box-shadow:
+            0 8px 25px rgba(0,0,0,.18) !important;
+
+        will-change:
+            transform;
+    }
+
+
+    /* =====================================================
+       RSVP ANIMATION
+       Sangat pelan agar tidak membebani HP
+    ===================================================== */
+
+    .rsvp-floating-wish.float-1 {
+        animation-duration:
+            30s !important;
+    }
+
+    .rsvp-floating-wish.float-2 {
+        animation-duration:
+            34s !important;
+    }
+
+    .rsvp-floating-wish.float-3 {
+        animation-duration:
+            32s !important;
+    }
+
+    .rsvp-floating-wish.float-4 {
+        animation-duration:
+            36s !important;
+    }
+
+    .rsvp-floating-wish.float-5 {
+        animation-duration:
+            31s !important;
+    }
+
+    .rsvp-floating-wish.float-6 {
+        animation-duration:
+            38s !important;
+    }
+
+
+    /* =====================================================
+       IMAGE
+    ===================================================== */
+
+    img {
+
+        image-rendering:
+            auto;
+
+        -webkit-user-drag:
+            none;
+    }
+
+
+    /* =====================================================
+       SLIDESHOW
+    ===================================================== */
+
+    .slide,
+    .hero-slide,
+    .couple-slide,
+    .groom-slide,
+    .bride-slide {
+
+        transform:
+            translate3d(0, 0, 0);
+
+        backface-visibility:
+            hidden;
+
+        -webkit-backface-visibility:
+            hidden;
+    }
+
+
+    /* =====================================================
+       GIFT / LIVE / GALLERY CARD
+    ===================================================== */
+
+    .gift-card,
+    .live-card,
+    .gallery-card {
+
+        transform:
+            translate3d(0, 0, 0);
+
+        backface-visibility:
+            hidden;
+
+        -webkit-backface-visibility:
+            hidden;
+    }
+
+
+    /* =====================================================
+       CLOSING GPU
+    ===================================================== */
+
+    .closing,
+    .closing-background,
+    .closing-overlay {
+
+        transform:
+            translateZ(0);
+    }
+
+
+    /* =====================================================
+       EVENT GPU
+    ===================================================== */
+
+    .wedding-event,
+    .event-background,
+    .event-background-overlay {
+
+        transform:
+            translateZ(0);
+    }
+
+
+    /* =====================================================
+       COUPLE PHOTO
+    ===================================================== */
+
+    .couple-photo-box {
+
+        transform:
+            translateZ(0);
+
+        overflow:
+            hidden;
+    }
+
+
+    /* =====================================================
+       GALLERY
+    ===================================================== */
+
+    .gallery {
+
+        contain:
+            layout paint;
+    }
+
+
+    /* =====================================================
+       RSVP
+    ===================================================== */
+
+    .rsvp {
+
+        contain:
+            layout paint;
+
+        transform:
+            translateZ(0);
+    }
+
+
+    .rsvp-wish-stage {
+
+        transform:
+            translateZ(0);
+
+        contain:
+            layout paint;
+    }
+
+
+    /* =====================================================
+       TOUCH
+    ===================================================== */
+
+    button,
+    a {
+
+        touch-action:
+            manipulation;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .closing-background-image {
+
+        animation-duration:
+            38s !important;
+    }
+
+    .event-background-image {
+
+        animation-duration:
+            40s !important;
+    }
+
+
+    /* RSVP CARD */
+
+    .rsvp-floating-wish {
+
+        width:
+            140px !important;
+
+        max-width:
+            140px !important;
+
+        padding:
+            10px 11px !important;
+
+        opacity:
+            .58 !important;
+    }
+
+
+    /* CLOSING */
+
+    .closing-content {
+
+        width:
+            calc(100vw - 28px) !important;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONE
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .rsvp-floating-wish {
+
+        width:
+            130px !important;
+
+        max-width:
+            130px !important;
+    }
+
+
+    .closing-content {
+
+        width:
+            calc(100vw - 22px) !important;
+
+        padding-left:
+            15px;
+
+        padding-right:
+            15px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        scroll-behavior:
+            auto !important;
+    }
+
+
+    .closing-background-image,
+    .event-background-image,
+    .rsvp-floating-wish,
+    .closing-heart {
+
+        animation:
+            none !important;
     }
 }
