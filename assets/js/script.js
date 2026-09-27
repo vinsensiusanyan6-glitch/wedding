@@ -58,19 +58,15 @@ const CONFIG = {
         ],
 
         groom: [
-            'assets/images/pria/01.avif',
+            'assets/images/pria/09.avif',
             'assets/images/pria/03.avif',
-            'assets/images/pria/06.avif',
-            'assets/images/pria/02.avif',
-            'assets/images/pria/09.avif'
+            'assets/images/pria/02.avif'
         ],
 
         bride: [
+            'assets/images/wanita/13.avif',
             'assets/images/wanita/10.avif',
-            'assets/images/wanita/15.avif',
-            'assets/images/wanita/12.avif',
-            'assets/images/wanita/14.avif',
-            'assets/images/wanita/13.avif'
+            'assets/images/wanita/12.avif'
         ],
 
         event: [
