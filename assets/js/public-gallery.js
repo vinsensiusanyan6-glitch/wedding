@@ -1,0 +1,3 @@
+const GALLERY_API_URL='https://script.google.com/macros/s/AKfycbzHT3gwV-qpFUMKgu26zE7Xt_P4LqRA_bnIKMLv-ga1fJP1YQTevBhduNvi_y8fV_pbKQ/exec';
+function applyGallery(result){const photos=(result&&result.photos)||{};document.querySelectorAll('[data-slot]').forEach(img=>{const item=photos[img.dataset.slot];if(item?.url){img.src=item.url+(item.url.includes('?')?'&':'?')+'v='+Date.now();}})}
+window.addEventListener('DOMContentLoaded',()=>{const cb='__gallery_'+Date.now();window[cb]=d=>{applyGallery(d);delete window[cb];s.remove()};const s=document.createElement('script');s.src=GALLERY_API_URL+'?action=list&callback='+cb+'&ts='+Date.now();s.onerror=()=>{delete window[cb];s.remove()};document.head.appendChild(s)})
