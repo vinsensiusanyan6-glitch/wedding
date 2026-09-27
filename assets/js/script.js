@@ -54,8 +54,7 @@ const CONFIG = {
             'assets/images/couple/25.avif',
             'assets/images/couple/24.avif',
             'assets/images/couple/21.avif',
-            'assets/images/couple/20.avif',
-            'assets/images/couple/30.avif'
+            'assets/images/couple/20.avif'
         ],
 
         groom: [
