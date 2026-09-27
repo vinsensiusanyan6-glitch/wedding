@@ -7789,3 +7789,103 @@ footer {
             none !important;
     }
 }
+
+/* =========================================================
+   VERY LIGHT MOBILE MODE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* ===============================================
+       Saat user sedang scroll
+    =============================================== */
+
+    html.is-scrolling
+    .rsvp-floating-wish,
+    html.is-scrolling
+    .closing-background-image,
+    html.is-scrolling
+    .event-background-image {
+
+        animation-play-state:
+            paused !important;
+    }
+
+
+    /* ===============================================
+       HP dengan hardware rendah
+    =============================================== */
+
+    html.very-light-mode
+    .rsvp-floating-wish {
+
+        animation-duration:
+            50s !important;
+    }
+
+
+    html.very-light-mode
+    .closing-background-image {
+
+        animation-duration:
+            55s !important;
+    }
+
+
+    html.very-light-mode
+    .event-background-image {
+
+        animation-duration:
+            55s !important;
+    }
+
+
+    /* ===============================================
+       Hilangkan blur berat
+    =============================================== */
+
+    html.very-light-mode
+    .closing-content,
+    html.very-light-mode
+    .quote-card,
+    html.very-light-mode
+    .event-card,
+    html.very-light-mode
+    .rsvp-floating-wish {
+
+        backdrop-filter:
+            none !important;
+
+        -webkit-backdrop-filter:
+            none !important;
+    }
+
+
+    /* ===============================================
+       Kurangi shadow
+    =============================================== */
+
+    html.very-light-mode
+    .closing-content,
+    html.very-light-mode
+    .quote-card,
+    html.very-light-mode
+    .event-card {
+
+        box-shadow:
+            0 8px 25px
+            rgba(0,0,0,.15) !important;
+    }
+
+
+    /* ===============================================
+       RSVP
+    =============================================== */
+
+    html.very-light-mode
+    .rsvp-floating-wish {
+
+        box-shadow:
+            none !important;
+    }
+}
