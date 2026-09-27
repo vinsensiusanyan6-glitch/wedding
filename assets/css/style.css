@@ -88,7 +88,7 @@ button {
 
     background:
         #aa9998
-        url('../images/32.jpg')
+        url('../images/galery/8.avif')
         center / cover
         no-repeat;
 
@@ -1145,34 +1145,11 @@ footer {
 
 .quote-bg-2 {
     background-image:
-        url("../images/couple/25.avif");
+        url("../images/couple/27.avif");
 
     animation-delay: 8s;
 }
 
-
-/* =========================================================
-   FOTO 3
-========================================================= */
-
-.quote-bg-3 {
-    background-image:
-        url("../image/couple/26.avif");
-
-    animation-delay: 16s;
-}
-
-
-/* =========================================================
-   FOTO 4
-========================================================= */
-
-.quote-bg-4 {
-    background-image:
-        url("../images/couple/27.avif");
-
-    animation-delay: 24s;
-}
 
 
 /* =========================================================
@@ -2106,23 +2083,13 @@ EVENT PHOTOS
 ========================================================= */
 
 .event-bg-1 {
-background-image: url("../images/couple/29.avif");
+background-image: url("../images/couple/30.avif");
 animation-delay: 0s;
 }
 
 .event-bg-2 {
-background-image: url("../images/couple/30.avif");
-animation-delay: 8s;
-}
-
-.event-bg-3 {
 background-image: url("../images/couple/31.avif");
-animation-delay: 16s;
-}
-
-.event-bg-4 {
-background-image: url("../images/couple/32.avif");
-animation-delay: 24s;
+animation-delay: 8s;
 }
 
 /* =========================================================
@@ -2968,23 +2935,13 @@ REDUCE MOTION
 /* BACKGROUND PHOTO */
 
 .gallery-bg-1 {
-    background-image: url("../images/couple/20.avif");
+    background-image: url("../images/couple/21.avif");
     animation-delay: 0s;
 }
 
 .gallery-bg-2 {
-    background-image: url("../images/couple/20.avif");
-    animation-delay: 9s;
-}
-
-.gallery-bg-3 {
-    background-image: url("../images/couple/21.avif");
-    animation-delay: 18s;
-}
-
-.gallery-bg-4 {
     background-image: url("../images/couple/22.avif");
-    animation-delay: 27s;
+    animation-delay: 9s;
 }
 
 
@@ -3460,30 +3417,16 @@ REDUCE MOTION
 
 .gift-bg-1 {
     background-image:
-        url("../images/couple/29.avif");
+        url("../images/couple/32.avif");
 
     animation-delay: 0s;
 }
 
 .gift-bg-2 {
     background-image:
-        url("../images/couple/30.avif");
+        url("../images/couple/21.avif");
 
-    animation-delay: 7s;
-}
-
-.gift-bg-3 {
-    background-image:
-        url("../images/couple/31.avif");
-
-    animation-delay: 14s;
-}
-
-.gift-bg-4 {
-    background-image:
-        url("../images/couple/32.avif");
-
-    animation-delay: 21s;
+    animation-delay: 9s;
 }
 
 
@@ -4573,9 +4516,7 @@ REDUCE MOTION
 
     background-image:
         url("../images/couple/30.avif"),
-        url("../images/couple/31.avif"),
-        url("../images/couple/32.avif"),
-        url("../images/couple/33.avif");
+        url("../images/couple/30.avif");
 
     background-size: cover;
     background-position: center;
