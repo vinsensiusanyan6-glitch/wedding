@@ -1427,10 +1427,7 @@ function showWishOnBackground(
     ];
 
 
-    const positions =
-        window.innerWidth <= 600
-            ? mobilePositions
-            : desktopPositions;
+    const positions = desktopPositions;
 
 
     const position =
