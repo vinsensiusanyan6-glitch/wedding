@@ -1,3 +1,32 @@
+/* =====================================================
+   NAMA TAMU OTOMATIS DARI LINK UNDANGAN
+===================================================== */
+
+(function () {
+
+    const guestName = document.getElementById("guestName");
+
+    if (!guestName) return;
+
+    // Ambil nama tamu dari parameter URL ?to=
+    const params = new URLSearchParams(window.location.search);
+
+    const name = params.get("to");
+
+    // Jika ada nama di link, tampilkan nama tersebut
+    if (name && name.trim() !== "") {
+
+        guestName.textContent = name.trim();
+
+    } else {
+
+        // Jika tidak ada nama, gunakan nama default
+        guestName.textContent = "Tamu Undangan";
+
+    }
+
+})();
+
 /* =========================================================
    CONFIGURATION
 ========================================================= */
