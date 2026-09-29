@@ -8191,12 +8191,17 @@ footer {
         0 0 6px rgba(0,0,0,.45);
 }
 
-/* Kecepatan melayang di HP = sama seperti desktop */
-@media (prefers-reduced-motion: no-preference) {
-    .rsvp .rsvp-wish-stage .rsvp-floating-wish.float-1 { animation-duration: 17s !important; }
-    .rsvp .rsvp-wish-stage .rsvp-floating-wish.float-2 { animation-duration: 21s !important; }
-    .rsvp .rsvp-wish-stage .rsvp-floating-wish.float-3 { animation-duration: 19s !important; }
-    .rsvp .rsvp-wish-stage .rsvp-floating-wish.float-4 { animation-duration: 23s !important; }
-    .rsvp .rsvp-wish-stage .rsvp-floating-wish.float-5 { animation-duration: 18s !important; }
-    .rsvp .rsvp-wish-stage .rsvp-floating-wish.float-6 { animation-duration: 25s !important; }
+/* Area gerak = persis area RSVP (foto), tidak melebihi batas.
+   Gerakan dikendalikan JS (memantul zigzag di 4 sisi),
+   jadi animasi CSS float-1..6 dimatikan. */
+.rsvp .rsvp-wish-stage {
+    inset: 0 !important;
+    overflow: hidden !important;
+}
+
+.rsvp .rsvp-wish-stage .rsvp-floating-wish {
+    left: 0 !important;
+    top: 0 !important;
+    animation: none !important;
+    will-change: transform;
 }
