@@ -1250,7 +1250,7 @@ async function loadWishes() {
                         wish
                     );
 
-                }, index * 250);
+                }, index * Math.min(250, 3000 / wishes.length));
 
             }
         );
@@ -1424,14 +1424,12 @@ function showWishOnBackground(
     stage.dataset.count = String(count + 1);
 
     const position =
-        positions[count % positions.length];
-
-
-    card.style.left =
-        position.left;
-
-    card.style.top =
-        position.top;
+        count < positions.length
+            ? positions[count]
+            : {
+                left: (Math.random() * 85) + '%',
+                top:  (Math.random() * 90) + '%'
+            };
 
 
     /* =====================================================
@@ -1469,6 +1467,8 @@ function showWishOnBackground(
 
     stage.appendChild(card);
 
+    registerBubble(card, stage, position);
+
     requestAnimationFrame(() => {
         requestAnimationFrame(() => {
             card.style.opacity = '';
@@ -1480,12 +1480,182 @@ function showWishOnBackground(
         card.style.transition = '';
     }, 800);
 
-    /* batasi jumlah: yang paling lama dihapus */
-    const MAX_WISHES = 16;
+    /* Batas jumlah gelembung. 0 = tampilkan SEMUA ucapan.
+       Kalau HP terasa berat, isi angka, mis. 40
+       (yang paling lama dihapus lebih dulu). */
+    const MAX_WISHES = 0;
 
-    while (stage.children.length > MAX_WISHES) {
-        stage.firstElementChild.remove();
+    if (MAX_WISHES > 0) {
+        while (stage.children.length > MAX_WISHES) {
+            stage.firstElementChild.remove();
+        }
     }
+}
+
+
+
+/* =========================================================
+   GELEMBUNG UCAPAN - GERAK ZIGZAG SENDIRI-SENDIRI
+   Tiap gelembung punya arah & kecepatan sendiri, memantul
+   di 4 sisi area RSVP (atas, bawah, kiri, kanan) sehingga
+   tidak pernah keluar dari foto.
+========================================================= */
+
+const wishBubbles = new Set();
+let wishRaf = null;
+let wishLast = 0;
+let wishInView = true;
+let wishObserverStarted = false;
+
+const wishReduceMotion =
+    window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+
+function initBubble(b) {
+
+    const W = b.stage.clientWidth;
+    const H = b.stage.clientHeight;
+
+    if (!W || !H) return false;
+
+    b.w = b.el.offsetWidth;
+    b.h = b.el.offsetHeight;
+
+    const px = parseFloat(b.pos.left) / 100 * W;
+    const py = parseFloat(b.pos.top) / 100 * H;
+
+    b.x = Math.min(Math.max(0, px), Math.max(0, W - b.w));
+    b.y = Math.min(Math.max(0, py), Math.max(0, H - b.h));
+
+    b.el.style.transform =
+        `translate3d(${b.x}px, ${b.y}px, 0)`;
+
+    b.el.style.visibility = '';
+
+    b.ready = true;
+
+    return true;
+}
+
+
+function wishTick(t) {
+
+    const dt = Math.min((t - wishLast) / 1000, 0.05);
+    wishLast = t;
+
+    wishBubbles.forEach(b => {
+
+        if (!b.el.isConnected) {
+            wishBubbles.delete(b);
+            return;
+        }
+
+        if (!b.ready && !initBubble(b)) return;
+
+        const W = b.stage.clientWidth;
+        const H = b.stage.clientHeight;
+
+        b.x += b.vx * dt;
+        b.y += b.vy * dt;
+
+        const maxX = Math.max(0, W - b.w);
+        const maxY = Math.max(0, H - b.h);
+
+        if (b.x <= 0) {
+            b.x = 0;
+            b.vx = Math.abs(b.vx);
+        } else if (b.x >= maxX) {
+            b.x = maxX;
+            b.vx = -Math.abs(b.vx);
+        }
+
+        if (b.y <= 0) {
+            b.y = 0;
+            b.vy = Math.abs(b.vy);
+        } else if (b.y >= maxY) {
+            b.y = maxY;
+            b.vy = -Math.abs(b.vy);
+        }
+
+        b.el.style.transform =
+            `translate3d(${b.x}px, ${b.y}px, 0)`;
+
+    });
+
+    wishRaf = requestAnimationFrame(wishTick);
+}
+
+
+function startWishLoop() {
+
+    if (wishRaf || wishReduceMotion || !wishInView) return;
+
+    wishLast = performance.now();
+    wishRaf = requestAnimationFrame(wishTick);
+}
+
+
+function stopWishLoop() {
+
+    if (wishRaf) cancelAnimationFrame(wishRaf);
+
+    wishRaf = null;
+}
+
+
+function startWishObserver() {
+
+    if (wishObserverStarted) return;
+
+    const rsvp = document.querySelector('.rsvp');
+
+    if (!rsvp || !('IntersectionObserver' in window)) return;
+
+    wishObserverStarted = true;
+
+    new IntersectionObserver(entries => {
+
+        wishInView = entries[0].isIntersecting;
+
+        if (wishInView) {
+            startWishLoop();
+        } else {
+            stopWishLoop();
+        }
+
+    }).observe(rsvp);
+}
+
+
+function registerBubble(el, stage, pos) {
+
+    /* arah acak diagonal supaya geraknya zigzag,
+       kecepatan tiap gelembung berbeda */
+    const speed = 22 + Math.random() * 30;
+    const angle = (20 + Math.random() * 50) * Math.PI / 180;
+
+    const b = {
+        el,
+        stage,
+        pos,
+        x: 0,
+        y: 0,
+        w: 0,
+        h: 0,
+        vx: Math.cos(angle) * speed * (Math.random() < .5 ? -1 : 1),
+        vy: Math.sin(angle) * speed * (Math.random() < .5 ? -1 : 1),
+        ready: false
+    };
+
+    el.style.visibility = 'hidden';
+
+    wishBubbles.add(b);
+
+    initBubble(b);
+
+    startWishObserver();
+    startWishLoop();
 }
 
 
@@ -2088,7 +2258,7 @@ window.addEventListener(
             );
 
         const max =
-            slowDevice ? 10 : 16;
+            Infinity;
 
         wishes.forEach((wish, index) => {
 
