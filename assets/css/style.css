@@ -8010,23 +8010,34 @@ footer {
     }
 }
 
-/* MOBILE EVENT CARD — SMALLER AND GLASSY/TRANSPARENT (like desktop) */
+/* MOBILE EVENT CARD — BENING SEPERTI GIFT CARD + LEBIH CENTER */
 @media (max-width: 600px) {
     .wedding-event {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+
         padding: 40px 16px !important;
         min-height: 100svh;
         overflow: visible;
+
+        text-align: center;
     }
     .wedding-event .event-container {
         width: 100%;
         max-width: 400px;
-        margin: auto;
+        margin-left: auto !important;
+        margin-right: auto !important;
     }
     .wedding-event .event-cards {
         width: 100%;
         max-width: 400px;
         grid-template-columns: minmax(0, 1fr);
         gap: 16px;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        justify-items: center;
     }
     .wedding-event .event-card {
         width: 100%;
@@ -8036,14 +8047,13 @@ footer {
         padding: 26px 18px 22px;
         border-radius: 18px;
 
-        /* TRANSPARAN — sama seperti versi desktop, foto background tetap terlihat */
-        background: rgba(7, 18, 34, .22) !important;
+        /* BENING — setara dengan gift-card, foto background sangat terlihat */
+        background: rgba(8, 22, 42, .10) !important;
 
-        /* Blur ringan supaya tetap kebaca tapi tetap bening */
-        -webkit-backdrop-filter: blur(2px) !important;
-        backdrop-filter: blur(2px) !important;
+        -webkit-backdrop-filter: blur(1.5px) !important;
+        backdrop-filter: blur(1.5px) !important;
 
-        box-shadow: 0 10px 26px rgba(0, 0, 0, .18),
+        box-shadow: 0 10px 26px rgba(0, 0, 0, .16),
                     inset 0 1px 0 rgba(255, 255, 255, .10);
     }
     .wedding-event .event-card-label {
