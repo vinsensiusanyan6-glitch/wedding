@@ -8085,3 +8085,143 @@ footer {
         max-width: 320px;
     }
 }
+
+/* =========================================================
+   MOBILE - UCAPAN JADI GELEMBUNG (BUBBLE) TRANSPARAN
+   Ditaruh paling bawah supaya menimpa aturan sebelumnya
+========================================================= */
+@media (max-width: 768px) {
+
+    .rsvp .rsvp-wish-stage .rsvp-floating-wish {
+        --size: 112px;
+
+        width: var(--size) !important;
+        height: var(--size) !important;
+        min-width: var(--size) !important;
+        max-width: var(--size) !important;
+
+        aspect-ratio: 1 / 1;
+        border-radius: 50% !important;
+        padding: 14px 12px !important;
+        box-sizing: border-box;
+
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+
+        /* efek gelembung: kilau di kiri atas, agak transparan */
+        background:
+            radial-gradient(
+                circle at 30% 25%,
+                rgba(255,255,255,.42) 0%,
+                rgba(255,255,255,.12) 28%,
+                rgba(255,255,255,0) 45%
+            ),
+            radial-gradient(
+                circle at 50% 55%,
+                rgba(30,60,110,.38) 0%,
+                rgba(15,35,75,.52) 100%
+            ) !important;
+
+        border: 1.5px solid rgba(255,255,255,.55) !important;
+
+        box-shadow:
+            inset 0 0 14px rgba(255,255,255,.22),
+            inset -6px -8px 14px rgba(218,183,91,.18),
+            0 6px 18px rgba(0,0,0,.22) !important;
+
+        opacity: .95 !important;
+        text-align: center;
+    }
+
+    /* variasi ukuran supaya terlihat natural */
+    .rsvp .rsvp-wish-stage .rsvp-floating-wish:nth-child(4n+1) { --size: 116px; }
+    .rsvp .rsvp-wish-stage .rsvp-floating-wish:nth-child(4n+2) { --size: 104px; }
+    .rsvp .rsvp-wish-stage .rsvp-floating-wish:nth-child(4n+3) { --size: 124px; }
+    .rsvp .rsvp-wish-stage .rsvp-floating-wish:nth-child(4n)   { --size: 108px; }
+
+    /* hilangkan garis dalam, judul, garis emas, dan status hadir */
+    .rsvp .rsvp-wish-stage .rsvp-floating-wish::before,
+    .rsvp .rsvp-wish-stage .rsvp-floating-wish .wish-title,
+    .rsvp .rsvp-wish-stage .rsvp-floating-wish .wish-line,
+    .rsvp .rsvp-wish-stage .rsvp-floating-wish .wish-attendance {
+        display: none !important;
+    }
+
+    /* NAMA - putih tebal, jelas */
+    .rsvp .rsvp-wish-stage .rsvp-floating-wish .wish-name {
+        display: block;
+        max-width: 100%;
+        margin: 0 0 3px;
+
+        color: #ffffff !important;
+        font-size: 13px !important;
+        font-weight: 700;
+        line-height: 1.15;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        text-shadow:
+            0 1px 3px rgba(0,0,0,.85),
+            0 0 8px rgba(0,0,0,.5);
+    }
+
+    /* ISI UCAPAN - putih terang, maksimal 3 baris */
+    .rsvp .rsvp-wish-stage .rsvp-floating-wish .wish-message {
+        margin: 0 !important;
+        max-width: 100% !important;
+
+        color: #fff8e1 !important;
+        font-size: 10px !important;
+        font-weight: 600;
+        line-height: 1.25 !important;
+        font-style: italic;
+
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        word-break: break-word;
+
+        text-shadow:
+            0 1px 3px rgba(0,0,0,.85),
+            0 0 6px rgba(0,0,0,.45);
+    }
+}
+
+/* gerakan melayang pelan, kecil, seperti gelembung */
+@media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
+
+    .rsvp .rsvp-wish-stage .rsvp-floating-wish.float-1 { animation-name: bubbleFloatA !important; animation-duration: 9s  !important; }
+    .rsvp .rsvp-wish-stage .rsvp-floating-wish.float-2 { animation-name: bubbleFloatB !important; animation-duration: 11s !important; }
+    .rsvp .rsvp-wish-stage .rsvp-floating-wish.float-3 { animation-name: bubbleFloatC !important; animation-duration: 10s !important; }
+    .rsvp .rsvp-wish-stage .rsvp-floating-wish.float-4 { animation-name: bubbleFloatB !important; animation-duration: 13s !important; }
+    .rsvp .rsvp-wish-stage .rsvp-floating-wish.float-5 { animation-name: bubbleFloatA !important; animation-duration: 12s !important; }
+    .rsvp .rsvp-wish-stage .rsvp-floating-wish.float-6 { animation-name: bubbleFloatC !important; animation-duration: 14s !important; }
+
+    .rsvp .rsvp-wish-stage .rsvp-floating-wish {
+        animation-timing-function: ease-in-out !important;
+        animation-iteration-count: infinite !important;
+        animation-direction: alternate !important;
+    }
+}
+
+@keyframes bubbleFloatA {
+    0%   { transform: translate3d(0, 0, 0); }
+    50%  { transform: translate3d(10px, -22px, 0); }
+    100% { transform: translate3d(-8px, -8px, 0); }
+}
+@keyframes bubbleFloatB {
+    0%   { transform: translate3d(0, 0, 0); }
+    50%  { transform: translate3d(-12px, -18px, 0); }
+    100% { transform: translate3d(8px, 10px, 0); }
+}
+@keyframes bubbleFloatC {
+    0%   { transform: translate3d(0, 0, 0); }
+    50%  { transform: translate3d(8px, 16px, 0); }
+    100% { transform: translate3d(-10px, -14px, 0); }
+}
