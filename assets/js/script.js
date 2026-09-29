@@ -1393,41 +1393,31 @@ function showWishOnBackground(
     ===================================================== */
 
     const mobilePositions = [
-
-        {
-            left: '4%',
-            top: '8%'
-        },
-
-        {
-            left: '58%',
-            top: '12%'
-        },
-
-        {
-            left: '8%',
-            top: '32%'
-        },
-
-        {
-            left: '60%',
-            top: '38%'
-        },
-
-        {
-            left: '3%',
-            top: '62%'
-        },
-
-        {
-            left: '57%',
-            top: '68%'
-        }
-
+        { left: '4%',  top: '3%'  },
+        { left: '36%', top: '9%'  },
+        { left: '68%', top: '2%'  },
+        { left: '12%', top: '19%' },
+        { left: '52%', top: '23%' },
+        { left: '78%', top: '17%' },
+        { left: '2%',  top: '37%' },
+        { left: '38%', top: '41%' },
+        { left: '70%', top: '35%' },
+        { left: '16%', top: '55%' },
+        { left: '56%', top: '58%' },
+        { left: '80%', top: '51%' },
+        { left: '4%',  top: '71%' },
+        { left: '38%', top: '76%' },
+        { left: '68%', top: '69%' },
+        { left: '22%', top: '87%' }
     ];
 
 
-    const positions = desktopPositions;
+    const isMobileView =
+        window.matchMedia('(max-width: 768px)').matches;
+
+    const positions = isMobileView
+        ? mobilePositions
+        : desktopPositions;
 
 
     const position =
@@ -2074,7 +2064,7 @@ window.addEventListener(
             );
 
         const max =
-            slowDevice ? 5 : 7;
+            slowDevice ? 10 : 16;
 
         wishes.forEach((wish, index) => {
 
