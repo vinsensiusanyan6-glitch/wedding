@@ -1185,6 +1185,7 @@ async function loadWishes() {
 
 
         stage.innerHTML = '';
+        stage.dataset.count = '0';
 
 
         /* =================================================
@@ -1412,19 +1413,18 @@ function showWishOnBackground(
     ];
 
 
-    const isMobileView =
-        window.matchMedia('(max-width: 768px)').matches;
+    /* Posisi yang sama untuk desktop & HP (persen).
+       Pakai counter supaya ucapan baru menempati
+       posisi ucapan lama yang dihapus. */
+    const positions = mobilePositions;
 
-    const positions = isMobileView
-        ? mobilePositions
-        : desktopPositions;
+    const count =
+        parseInt(stage.dataset.count || '0', 10);
 
+    stage.dataset.count = String(count + 1);
 
     const position =
-        positions[
-            stage.children.length %
-            positions.length
-        ];
+        positions[count % positions.length];
 
 
     card.style.left =
@@ -1461,7 +1461,31 @@ function showWishOnBackground(
     `;
 
 
+    /* muncul langsung dengan efek membesar */
+    card.style.opacity = '0';
+    card.style.scale = '.3';
+    card.style.transition =
+        'opacity .5s ease, scale .6s cubic-bezier(.2,1.4,.4,1)';
+
     stage.appendChild(card);
+
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            card.style.opacity = '';
+            card.style.scale = '1';
+        });
+    });
+
+    setTimeout(() => {
+        card.style.transition = '';
+    }, 800);
+
+    /* batasi jumlah: yang paling lama dihapus */
+    const MAX_WISHES = 16;
+
+    while (stage.children.length > MAX_WISHES) {
+        stage.firstElementChild.remove();
+    }
 }
 
 
@@ -2068,7 +2092,7 @@ window.addEventListener(
 
         wishes.forEach((wish, index) => {
 
-            if (index >= max) {
+            if (index < wishes.length - max) {
 
                 wish.remove();
 
