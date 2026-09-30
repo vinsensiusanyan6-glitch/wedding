@@ -5164,14 +5164,15 @@ footer {
     padding: 12px;
 
     border:
-        1px solid rgba(221, 183, 92, .48);
+        1px solid rgba(221, 183, 92, .55);
 
     border-radius: 0;
 
     outline: none;
 
+    /* Warna lebih terlihat, senada dengan tombol Kirim Ucapan */
     background:
-        rgba(255, 255, 255, .13);
+        rgba(20, 14, 12, .42);
 
     color: #fff;
 
@@ -5179,8 +5180,8 @@ footer {
     font-size: 11px;
     font-weight: 400;
 
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
 
     transition:
         border-color .3s ease,
@@ -5190,7 +5191,7 @@ footer {
 
 .rsvp-form input::placeholder,
 .rsvp-form textarea::placeholder {
-    color: rgba(255, 255, 255, .62);
+    color: rgba(255, 255, 255, .68);
 }
 
 .rsvp-form input:focus,
@@ -5200,7 +5201,7 @@ footer {
         rgba(221, 183, 92, .9);
 
     background:
-        rgba(255, 255, 255, .18);
+        rgba(20, 14, 12, .55);
 
     box-shadow:
         0 0 0 1px rgba(221, 183, 92, .18),
@@ -5236,7 +5237,7 @@ footer {
         1px solid rgba(221, 183, 92, .85);
 
     background:
-        rgba(255, 255, 255, .08);
+        rgba(20, 14, 12, .42);
 
     color: #fff;
 
@@ -5368,13 +5369,13 @@ footer {
     padding: 14px 15px;
 
     border:
-        1px solid rgba(221, 183, 92, .45);
+        1px solid rgba(20, 20, 20, 0.45);
 
     background:
-        rgba(255, 255, 255, .12);
+        rgba(212, 10, 10, 0.12);
 
     box-shadow:
-        inset 0 0 20px rgba(255, 255, 255, .025);
+        inset 0 0 20px rgba(14, 3, 3, 0.025);
 
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
@@ -5387,10 +5388,10 @@ footer {
 
 .wish:hover {
     border-color:
-        rgba(221, 183, 92, .75);
+        rgba(14, 13, 13, 0.75);
 
     background:
-        rgba(255, 255, 255, .16);
+        rgba(10, 10, 10, 0.16);
 
     transform: translateY(-2px);
 }
@@ -6985,6 +6986,303 @@ footer {
         line-height: 1.7 !important;
     }
 
+/* =========================================================
+   HOME CONTENT
+   MULAI DARI TENGAH FOTO → TURUN KE BAWAH
+========================================================= */
+
+.home-content {
+    position: absolute !important;
+
+    left: 50% !important;
+    top: 56% !important;
+
+    bottom: auto !important;
+
+    transform: translateX(-50%) !important;
+
+    width: 88% !important;
+    max-width: 380px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    z-index: 20;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    box-sizing: border-box;
+
+    color: #fff;
+
+    text-shadow:
+        0 2px 8px rgba(0,0,0,.65),
+        0 1px 3px rgba(0,0,0,.45);
+}
+
+
+/* =========================================================
+   THE WEDDING OF
+========================================================= */
+
+.home-content .eyebrow {
+    margin: 0 0 4px !important;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 11px;
+
+    font-style: italic;
+
+    font-weight: 400;
+
+    line-height: 1.1;
+
+    letter-spacing: 1px;
+
+    color: #fff;
+}
+
+
+/* =========================================================
+   NAMA
+========================================================= */
+
+.home-content .display {
+    display: flex !important;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 100%;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(29px, 7vw, 38px);
+
+    font-weight: 400;
+
+    line-height: .92;
+
+    color: #fff;
+}
+
+.home-content .display span {
+    display: block;
+
+    margin: 0;
+
+    padding: 0;
+
+    white-space: nowrap;
+}
+
+.home-content .display em {
+    display: block;
+
+    margin: 2px 0;
+
+    font-size: 20px;
+
+    font-style: normal;
+
+    line-height: .7;
+}
+
+
+/* =========================================================
+   TANGGAL
+========================================================= */
+
+.home-content .hero-date {
+    margin: 7px 0 8px !important;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 7px;
+
+    letter-spacing: 1.8px;
+
+    line-height: 1;
+
+    color: rgba(255,255,255,.95);
+}
+
+
+/* =========================================================
+   COUNTDOWN
+========================================================= */
+
+.home-content .countdown {
+    display: flex !important;
+
+    flex-direction: row !important;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: 0 !important;
+
+    background: transparent !important;
+}
+
+.home-content .countdown > div {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    min-width: 28px;
+
+    margin: 0;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+}
+
+.home-content .countdown b {
+    margin: 0;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    line-height: 1;
+
+    color: #fff;
+}
+
+.home-content .countdown span {
+    margin-top: 2px;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 5px;
+
+    line-height: 1;
+
+    color: rgba(255,255,255,.9);
+}
+
+
+/* =========================================================
+   GARIS
+========================================================= */
+
+.home-content .thin-rule {
+    width: 130px;
+
+    height: 1px;
+
+    margin: 8px 0 7px !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.8),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   WELCOME
+========================================================= */
+
+.home-content .welcome-title {
+    margin: 0 !important;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    line-height: 1.1;
+
+    color: #fff;
+}
+
+
+/* =========================================================
+   PARAGRAF
+========================================================= */
+
+.home-content .body {
+    width: 100%;
+
+    max-width: 300px;
+
+    margin: 5px auto 0 !important;
+    padding: 0;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 6px;
+
+    line-height: 1.55;
+
+    text-align: center;
+
+    color: rgba(255,255,255,.9);
+}
+/* =========================================================
+   DESKTOP + MOBILE
+   POSISI TETAP MULAI DARI TENGAH
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .home-content {
+        top: 56% !important;
+
+        bottom: auto !important;
+
+        width: 88% !important;
+
+        max-width: 380px !important;
+
+        transform: translateX(-50%) !important;
+    }
+
+    .home-content .display {
+        font-size: 29px;
+    }
+
+    .home-content .display em {
+        font-size: 19px;
+    }
+
+    .home-content .body {
+        max-width: 290px;
+
+        font-size: 5.8px;
+    }
+}
+
 
     /* -----------------------------------------------------
        COUPLE
@@ -8094,16 +8392,17 @@ footer {
 ========================================================= */
 
 .rsvp .rsvp-wish-stage .rsvp-floating-wish {
-    --size: 118px;
+    --w: 158px;
 
-    width: var(--size) !important;
-    height: var(--size) !important;
-    min-width: var(--size) !important;
-    max-width: var(--size) !important;
+    width: var(--w) !important;
+    height: auto !important;
+    min-width: var(--w) !important;
+    max-width: var(--w) !important;
+    min-height: 92px;
 
-    aspect-ratio: 1 / 1;
-    border-radius: 50% !important;
-    padding: 14px 12px !important;
+    aspect-ratio: auto;
+    border-radius: 14px !important;
+    padding: 14px 14px !important;
     box-sizing: border-box;
 
     display: flex !important;
@@ -8112,37 +8411,36 @@ footer {
     justify-content: center;
     overflow: hidden;
 
+    /* WARNA MATCH DENGAN BACKGROUND RSVP (mauve/taupe hangat #e4d9d7 + overlay gelap) */
     background:
         radial-gradient(
-            circle at 30% 25%,
-            rgba(255,255,255,.42) 0%,
-            rgba(255,255,255,.12) 28%,
-            rgba(255,255,255,0) 45%
+            circle at 25% 20%,
+            rgba(255,250,246,.20) 0%,
+            rgba(255,250,246,0) 40%
         ),
-        radial-gradient(
-            circle at 50% 55%,
-            rgba(30,60,110,.38) 0%,
-            rgba(15,35,75,.52) 100%
+        linear-gradient(
+            160deg,
+            rgba(196,180,174,.55) 0%,
+            rgba(90,72,66,.62) 100%
         ) !important;
 
-    border: 1.5px solid rgba(255,255,255,.55) !important;
+    border: 1.5px solid rgba(218,183,91,.45) !important;
 
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
 
     box-shadow:
-        inset 0 0 14px rgba(255,255,255,.22),
-        inset -6px -8px 14px rgba(218,183,91,.18),
-        0 6px 18px rgba(0,0,0,.22) !important;
+        inset 0 0 14px rgba(255,255,255,.10),
+        0 8px 20px rgba(0,0,0,.24) !important;
 
-    opacity: .95 !important;
+    opacity: .96 !important;
     text-align: center;
 }
 
-.rsvp .rsvp-wish-stage .rsvp-floating-wish:nth-child(4n+1) { --size: 122px; }
-.rsvp .rsvp-wish-stage .rsvp-floating-wish:nth-child(4n+2) { --size: 108px; }
-.rsvp .rsvp-wish-stage .rsvp-floating-wish:nth-child(4n+3) { --size: 130px; }
-.rsvp .rsvp-wish-stage .rsvp-floating-wish:nth-child(4n)   { --size: 112px; }
+.rsvp .rsvp-wish-stage .rsvp-floating-wish:nth-child(4n+1) { --w: 164px; }
+.rsvp .rsvp-wish-stage .rsvp-floating-wish:nth-child(4n+2) { --w: 148px; }
+.rsvp .rsvp-wish-stage .rsvp-floating-wish:nth-child(4n+3) { --w: 170px; }
+.rsvp .rsvp-wish-stage .rsvp-floating-wish:nth-child(4n)   { --w: 152px; }
 
 .rsvp .rsvp-wish-stage .rsvp-floating-wish::before,
 .rsvp .rsvp-wish-stage .rsvp-floating-wish .wish-title,
@@ -8204,4 +8502,167 @@ footer {
     top: 0 !important;
     animation: none !important;
     will-change: transform;
+}
+
+
+/* =========================================================
+   HOME CONTENT — GAYA & POSISI SAMA SEPERTI COVER
+   Ditaruh PALING BAWAH supaya menimpa aturan HOME sebelumnya
+========================================================= */
+
+/* .home-content = .card-content (elemen yang sama, tinggi penuh).
+   Kotak dibuat penuh menutupi foto, isinya ditumpuk dari BAWAH. */
+#home .home-content {
+    position: absolute !important;
+
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+
+    transform: none !important;
+
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    max-width: none !important;
+
+    margin: 0 !important;
+
+    /* jarak dari bawah = sama dengan .cover-content (8vh) */
+    padding: 0 22px 8vh !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+
+    text-align: center;
+    color: #fff;
+}
+
+/* The Wedding of (sama dengan .cover-kicker) */
+#home .home-content .eyebrow {
+    margin: 0 0 5px !important;
+
+    font-family: var(--serif) !important;
+    font-size: 20px !important;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: .08em !important;
+}
+
+/* Nama (sama dengan .cover h1) */
+#home .home-content .display {
+    display: block !important;
+
+    width: 100%;
+    margin: 0 !important;
+
+    font-family: var(--serif);
+    font-size: 46px !important;
+    font-weight: 500;
+    line-height: 1.02 !important;
+
+    text-align: center;
+}
+
+#home .home-content .display span {
+    display: block;
+    white-space: nowrap;
+}
+
+#home .home-content .display em {
+    display: block;
+
+    width: 100%;
+    margin: 8px 0 !important;
+
+    font-size: 1em !important;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.02 !important;
+}
+
+/* Garis di bawah nama (sama dengan .cover-rule) */
+#home .home-content .display::after {
+    content: "";
+
+    display: block;
+
+    width: 205px;
+    margin: 22px auto 0;
+
+    border-top: 1px solid rgba(255, 255, 255, .75);
+}
+
+/* Tanggal */
+#home .home-content .hero-date {
+    margin: 16px 0 10px !important;
+
+    font-family: var(--sans) !important;
+    font-size: 11px !important;
+    font-style: normal !important;
+    letter-spacing: .22em !important;
+    line-height: 1;
+}
+
+/* Countdown */
+#home .home-content .countdown {
+    width: auto !important;
+    gap: 16px !important;
+}
+
+#home .home-content .countdown > div {
+    min-width: 34px;
+}
+
+#home .home-content .countdown b {
+    font-size: 22px !important;
+}
+
+#home .home-content .countdown span {
+    font-size: 6px !important;
+    letter-spacing: .14em !important;
+}
+
+/* Welcome + paragraf (sama dengan gaya "Kepada Yth." & nama tamu) */
+#home .home-content .welcome-title {
+    margin: 18px 0 6px !important;
+
+    font-size: 20px !important;
+    font-weight: 600;
+    line-height: 1.15 !important;
+}
+
+#home .home-content .body {
+    width: 100%;
+    max-width: 340px !important;
+
+    margin: 0 auto !important;
+
+    font-family: var(--serif) !important;
+    font-size: 13px !important;
+    font-weight: 400;
+    line-height: 1.4 !important;
+}
+
+@media (max-width: 760px) {
+    #home .home-content {
+        padding-bottom: 7vh !important;   /* sama dengan cover di HP */
+    }
+
+    #home .home-content .display {
+        font-size: 42px !important;
+    }
+}
+
+@media (max-width: 420px) {
+    #home .home-content .display {
+        font-size: 40px !important;
+    }
+
+    #home .home-content .display em {
+        margin: 6px 0 !important;
+    }
 }
