@@ -8584,6 +8584,46 @@ footer {
     line-height: 1.02 !important;
 }
 
+/* Nama mempelai (markup <span><h2>...</h2><em>&</em><h2>...</h2></span>)
+   Samakan tipe huruf & gaya dengan .cover h1 supaya konsisten dengan cover depan */
+#home .home-content > span {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+#home .home-content > span h2 {
+    display: block;
+
+    width: 100%;
+    margin: 0 !important;
+
+    font-family: var(--serif) !important;
+    font-size: 34px !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+    line-height: 1.08 !important;
+    letter-spacing: normal !important;
+
+    color: #fff;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, .2);
+}
+
+#home .home-content > span em {
+    display: block;
+
+    width: 100%;
+    margin: 6px 0 !important;
+
+    font-family: var(--serif) !important;
+    font-size: 1em !important;
+    font-style: italic !important;
+    font-weight: 400 !important;
+    line-height: 1.02 !important;
+
+    color: #fff;
+}
+
 /* Garis di bawah nama (sama dengan .cover-rule) */
 #home .home-content .display::after {
     content: "";
